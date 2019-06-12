@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		93B70B8B22B0983600CF9C6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B70B8A22B0983600CF9C6B /* AppDelegate.swift */; };
+		93B70B8D22B0983600CF9C6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B70B8C22B0983600CF9C6B /* ViewController.swift */; };
+		93B70B9022B0983600CF9C6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B70B8E22B0983600CF9C6B /* Main.storyboard */; };
+		93B70B9222B0983900CF9C6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B70B9122B0983900CF9C6B /* Assets.xcassets */; };
+		93B70B9522B0983900CF9C6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B70B9322B0983900CF9C6B /* LaunchScreen.storyboard */; };
+		93B70BA022B0983A00CF9C6B /* GoJekContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B70B9F22B0983A00CF9C6B /* GoJekContactsTests.swift */; };
+		93B70BAB22B0983A00CF9C6B /* GoJekContactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B70BAA22B0983A00CF9C6B /* GoJekContactsUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		93B70B9C22B0983A00CF9C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93B70B7F22B0983600CF9C6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93B70B8622B0983600CF9C6B;
+			remoteInfo = GoJekContacts;
+		};
+		93B70BA722B0983A00CF9C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93B70B7F22B0983600CF9C6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93B70B8622B0983600CF9C6B;
+			remoteInfo = GoJekContacts;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		93B70B8722B0983600CF9C6B /* GoJekContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoJekContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93B70B8A22B0983600CF9C6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		93B70B8C22B0983600CF9C6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		93B70B8F22B0983600CF9C6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		93B70B9122B0983900CF9C6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		93B70B9422B0983900CF9C6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		93B70B9622B0983900CF9C6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93B70B9B22B0983A00CF9C6B /* GoJekContactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoJekContactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93B70B9F22B0983A00CF9C6B /* GoJekContactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoJekContactsTests.swift; sourceTree = "<group>"; };
+		93B70BA122B0983A00CF9C6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93B70BA622B0983A00CF9C6B /* GoJekContactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoJekContactsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93B70BAA22B0983A00CF9C6B /* GoJekContactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoJekContactsUITests.swift; sourceTree = "<group>"; };
+		93B70BAC22B0983A00CF9C6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		93B70B8422B0983600CF9C6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93B70B9822B0983A00CF9C6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93B70BA322B0983A00CF9C6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		93B70B7E22B0983600CF9C6B = {
+			isa = PBXGroup;
+			children = (
+				93B70B8922B0983600CF9C6B /* GoJekContacts */,
+				93B70B9E22B0983A00CF9C6B /* GoJekContactsTests */,
+				93B70BA922B0983A00CF9C6B /* GoJekContactsUITests */,
+				93B70B8822B0983600CF9C6B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		93B70B8822B0983600CF9C6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				93B70B8722B0983600CF9C6B /* GoJekContacts.app */,
+				93B70B9B22B0983A00CF9C6B /* GoJekContactsTests.xctest */,
+				93B70BA622B0983A00CF9C6B /* GoJekContactsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		93B70B8922B0983600CF9C6B /* GoJekContacts */ = {
+			isa = PBXGroup;
+			children = (
+				93B70B8A22B0983600CF9C6B /* AppDelegate.swift */,
+				93B70B8C22B0983600CF9C6B /* ViewController.swift */,
+				93B70B8E22B0983600CF9C6B /* Main.storyboard */,
+				93B70B9122B0983900CF9C6B /* Assets.xcassets */,
+				93B70B9322B0983900CF9C6B /* LaunchScreen.storyboard */,
+				93B70B9622B0983900CF9C6B /* Info.plist */,
+			);
+			path = GoJekContacts;
+			sourceTree = "<group>";
+		};
+		93B70B9E22B0983A00CF9C6B /* GoJekContactsTests */ = {
+			isa = PBXGroup;
+			children = (
+				93B70B9F22B0983A00CF9C6B /* GoJekContactsTests.swift */,
+				93B70BA122B0983A00CF9C6B /* Info.plist */,
+			);
+			path = GoJekContactsTests;
+			sourceTree = "<group>";
+		};
+		93B70BA922B0983A00CF9C6B /* GoJekContactsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				93B70BAA22B0983A00CF9C6B /* GoJekContactsUITests.swift */,
+				93B70BAC22B0983A00CF9C6B /* Info.plist */,
+			);
+			path = GoJekContactsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		93B70B8622B0983600CF9C6B /* GoJekContacts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93B70BAF22B0983A00CF9C6B /* Build configuration list for PBXNativeTarget "GoJekContacts" */;
+			buildPhases = (
+				93B70B8322B0983600CF9C6B /* Sources */,
+				93B70B8422B0983600CF9C6B /* Frameworks */,
+				93B70B8522B0983600CF9C6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoJekContacts;
+			productName = GoJekContacts;
+			productReference = 93B70B8722B0983600CF9C6B /* GoJekContacts.app */;
+			productType = "com.apple.product-type.application";
+		};
+		93B70B9A22B0983A00CF9C6B /* GoJekContactsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93B70BB222B0983A00CF9C6B /* Build configuration list for PBXNativeTarget "GoJekContactsTests" */;
+			buildPhases = (
+				93B70B9722B0983A00CF9C6B /* Sources */,
+				93B70B9822B0983A00CF9C6B /* Frameworks */,
+				93B70B9922B0983A00CF9C6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93B70B9D22B0983A00CF9C6B /* PBXTargetDependency */,
+			);
+			name = GoJekContactsTests;
+			productName = GoJekContactsTests;
+			productReference = 93B70B9B22B0983A00CF9C6B /* GoJekContactsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		93B70BA522B0983A00CF9C6B /* GoJekContactsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93B70BB522B0983A00CF9C6B /* Build configuration list for PBXNativeTarget "GoJekContactsUITests" */;
+			buildPhases = (
+				93B70BA222B0983A00CF9C6B /* Sources */,
+				93B70BA322B0983A00CF9C6B /* Frameworks */,
+				93B70BA422B0983A00CF9C6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93B70BA822B0983A00CF9C6B /* PBXTargetDependency */,
+			);
+			name = GoJekContactsUITests;
+			productName = GoJekContactsUITests;
+			productReference = 93B70BA622B0983A00CF9C6B /* GoJekContactsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		93B70B7F22B0983600CF9C6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = ioshellboy;
+				TargetAttributes = {
+					93B70B8622B0983600CF9C6B = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					93B70B9A22B0983A00CF9C6B = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 93B70B8622B0983600CF9C6B;
+					};
+					93B70BA522B0983A00CF9C6B = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 93B70B8622B0983600CF9C6B;
+					};
+				};
+			};
+			buildConfigurationList = 93B70B8222B0983600CF9C6B /* Build configuration list for PBXProject "GoJekContacts" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 93B70B7E22B0983600CF9C6B;
+			productRefGroup = 93B70B8822B0983600CF9C6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				93B70B8622B0983600CF9C6B /* GoJekContacts */,
+				93B70B9A22B0983A00CF9C6B /* GoJekContactsTests */,
+				93B70BA522B0983A00CF9C6B /* GoJekContactsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		93B70B8522B0983600CF9C6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93B70B9522B0983900CF9C6B /* LaunchScreen.storyboard in Resources */,
+				93B70B9222B0983900CF9C6B /* Assets.xcassets in Resources */,
+				93B70B9022B0983600CF9C6B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93B70B9922B0983A00CF9C6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93B70BA422B0983A00CF9C6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		93B70B8322B0983600CF9C6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93B70B8D22B0983600CF9C6B /* ViewController.swift in Sources */,
+				93B70B8B22B0983600CF9C6B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93B70B9722B0983A00CF9C6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93B70BA022B0983A00CF9C6B /* GoJekContactsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93B70BA222B0983A00CF9C6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93B70BAB22B0983A00CF9C6B /* GoJekContactsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		93B70B9D22B0983A00CF9C6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93B70B8622B0983600CF9C6B /* GoJekContacts */;
+			targetProxy = 93B70B9C22B0983A00CF9C6B /* PBXContainerItemProxy */;
+		};
+		93B70BA822B0983A00CF9C6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93B70B8622B0983600CF9C6B /* GoJekContacts */;
+			targetProxy = 93B70BA722B0983A00CF9C6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		93B70B8E22B0983600CF9C6B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93B70B8F22B0983600CF9C6B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		93B70B9322B0983900CF9C6B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93B70B9422B0983900CF9C6B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		93B70BAD22B0983A00CF9C6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		93B70BAE22B0983A00CF9C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		93B70BB022B0983A00CF9C6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoJekContacts/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.til.gaana.GoJekContacts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		93B70BB122B0983A00CF9C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoJekContacts/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.til.gaana.GoJekContacts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		93B70BB322B0983A00CF9C6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoJekContactsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.til.gaana.GoJekContactsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoJekContacts.app/GoJekContacts";
+			};
+			name = Debug;
+		};
+		93B70BB422B0983A00CF9C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoJekContactsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.til.gaana.GoJekContactsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoJekContacts.app/GoJekContacts";
+			};
+			name = Release;
+		};
+		93B70BB622B0983A00CF9C6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoJekContactsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.til.gaana.GoJekContactsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GoJekContacts;
+			};
+			name = Debug;
+		};
+		93B70BB722B0983A00CF9C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoJekContactsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.til.gaana.GoJekContactsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GoJekContacts;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		93B70B8222B0983600CF9C6B /* Build configuration list for PBXProject "GoJekContacts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93B70BAD22B0983A00CF9C6B /* Debug */,
+				93B70BAE22B0983A00CF9C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93B70BAF22B0983A00CF9C6B /* Build configuration list for PBXNativeTarget "GoJekContacts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93B70BB022B0983A00CF9C6B /* Debug */,
+				93B70BB122B0983A00CF9C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93B70BB222B0983A00CF9C6B /* Build configuration list for PBXNativeTarget "GoJekContactsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93B70BB322B0983A00CF9C6B /* Debug */,
+				93B70BB422B0983A00CF9C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93B70BB522B0983A00CF9C6B /* Build configuration list for PBXNativeTarget "GoJekContactsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93B70BB622B0983A00CF9C6B /* Debug */,
+				93B70BB722B0983A00CF9C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 93B70B7F22B0983600CF9C6B /* Project object */;
+}
