@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32199B2F8D611DC2C422336D /* Pods_GoJekContacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEABADEC20B60694FB53182 /* Pods_GoJekContacts.framework */; };
+		5585071DC63D2A96B6F56DF5 /* Pods_GoJekContactsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB457FA4D7C188512C48457 /* Pods_GoJekContactsTests.framework */; };
+		9338467B22B09C3300B74A90 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338467A22B09C3300B74A90 /* DataFetcher.swift */; };
+		9338467D22B09C4C00B74A90 /* APIConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338467C22B09C4C00B74A90 /* APIConnection.swift */; };
+		9338467F22B09C7300B74A90 /* URLObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338467E22B09C7300B74A90 /* URLObject.swift */; };
+		9338468122B0B35E00B74A90 /* DummyModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338468022B0B35E00B74A90 /* DummyModal.swift */; };
 		93B70B8B22B0983600CF9C6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B70B8A22B0983600CF9C6B /* AppDelegate.swift */; };
 		93B70B8D22B0983600CF9C6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B70B8C22B0983600CF9C6B /* ViewController.swift */; };
 		93B70B9022B0983600CF9C6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B70B8E22B0983600CF9C6B /* Main.storyboard */; };
@@ -14,6 +20,7 @@
 		93B70B9522B0983900CF9C6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B70B9322B0983900CF9C6B /* LaunchScreen.storyboard */; };
 		93B70BA022B0983A00CF9C6B /* GoJekContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B70B9F22B0983A00CF9C6B /* GoJekContactsTests.swift */; };
 		93B70BAB22B0983A00CF9C6B /* GoJekContactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B70BAA22B0983A00CF9C6B /* GoJekContactsUITests.swift */; };
+		BE4FA02A4E3F96E90B5DEA8E /* Pods_GoJekContactsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DFE2917C28D0CB08064F5C /* Pods_GoJekContactsUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1442E97B5666656AE9246D2A /* Pods-GoJekContactsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoJekContactsUITests.release.xcconfig"; path = "Target Support Files/Pods-GoJekContactsUITests/Pods-GoJekContactsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		16DFE2917C28D0CB08064F5C /* Pods_GoJekContactsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoJekContactsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BB457FA4D7C188512C48457 /* Pods_GoJekContactsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoJekContactsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D980EE06F2686850C2092BB /* Pods-GoJekContactsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoJekContactsTests.release.xcconfig"; path = "Target Support Files/Pods-GoJekContactsTests/Pods-GoJekContactsTests.release.xcconfig"; sourceTree = "<group>"; };
+		1EEABADEC20B60694FB53182 /* Pods_GoJekContacts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoJekContacts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1C4B495A6467E3817EBCC5 /* Pods-GoJekContacts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoJekContacts.debug.xcconfig"; path = "Target Support Files/Pods-GoJekContacts/Pods-GoJekContacts.debug.xcconfig"; sourceTree = "<group>"; };
+		81B55C99C9238679D883BC83 /* Pods-GoJekContacts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoJekContacts.release.xcconfig"; path = "Target Support Files/Pods-GoJekContacts/Pods-GoJekContacts.release.xcconfig"; sourceTree = "<group>"; };
+		911E0904B1C196F039120403 /* Pods-GoJekContactsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoJekContactsUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoJekContactsUITests/Pods-GoJekContactsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9338467A22B09C3300B74A90 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		9338467C22B09C4C00B74A90 /* APIConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConnection.swift; sourceTree = "<group>"; };
+		9338467E22B09C7300B74A90 /* URLObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLObject.swift; sourceTree = "<group>"; };
+		9338468022B0B35E00B74A90 /* DummyModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModal.swift; sourceTree = "<group>"; };
 		93B70B8722B0983600CF9C6B /* GoJekContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoJekContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B70B8A22B0983600CF9C6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B70B8C22B0983600CF9C6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +66,7 @@
 		93B70BA622B0983A00CF9C6B /* GoJekContactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoJekContactsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B70BAA22B0983A00CF9C6B /* GoJekContactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoJekContactsUITests.swift; sourceTree = "<group>"; };
 		93B70BAC22B0983A00CF9C6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F43ACE4198FC13D0ABA3C1D8 /* Pods-GoJekContactsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoJekContactsTests.debug.xcconfig"; path = "Target Support Files/Pods-GoJekContactsTests/Pods-GoJekContactsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32199B2F8D611DC2C422336D /* Pods_GoJekContacts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5585071DC63D2A96B6F56DF5 /* Pods_GoJekContactsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +90,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE4FA02A4E3F96E90B5DEA8E /* Pods_GoJekContactsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09FC6D8BE3E5A32D045FFE98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EEABADEC20B60694FB53182 /* Pods_GoJekContacts.framework */,
+				1BB457FA4D7C188512C48457 /* Pods_GoJekContactsTests.framework */,
+				16DFE2917C28D0CB08064F5C /* Pods_GoJekContactsUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9338467922B09C1300B74A90 /* DataFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				9338467A22B09C3300B74A90 /* DataFetcher.swift */,
+				9338467C22B09C4C00B74A90 /* APIConnection.swift */,
+				9338467E22B09C7300B74A90 /* URLObject.swift */,
+			);
+			path = DataFetcher;
+			sourceTree = "<group>";
+		};
 		93B70B7E22B0983600CF9C6B = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +124,8 @@
 				93B70B9E22B0983A00CF9C6B /* GoJekContactsTests */,
 				93B70BA922B0983A00CF9C6B /* GoJekContactsUITests */,
 				93B70B8822B0983600CF9C6B /* Products */,
+				E0138116D3550C79F28C602C /* Pods */,
+				09FC6D8BE3E5A32D045FFE98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,8 +142,10 @@
 		93B70B8922B0983600CF9C6B /* GoJekContacts */ = {
 			isa = PBXGroup;
 			children = (
+				9338467922B09C1300B74A90 /* DataFetcher */,
 				93B70B8A22B0983600CF9C6B /* AppDelegate.swift */,
 				93B70B8C22B0983600CF9C6B /* ViewController.swift */,
+				9338468022B0B35E00B74A90 /* DummyModal.swift */,
 				93B70B8E22B0983600CF9C6B /* Main.storyboard */,
 				93B70B9122B0983900CF9C6B /* Assets.xcassets */,
 				93B70B9322B0983900CF9C6B /* LaunchScreen.storyboard */,
@@ -125,6 +172,19 @@
 			path = GoJekContactsUITests;
 			sourceTree = "<group>";
 		};
+		E0138116D3550C79F28C602C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C1C4B495A6467E3817EBCC5 /* Pods-GoJekContacts.debug.xcconfig */,
+				81B55C99C9238679D883BC83 /* Pods-GoJekContacts.release.xcconfig */,
+				F43ACE4198FC13D0ABA3C1D8 /* Pods-GoJekContactsTests.debug.xcconfig */,
+				1D980EE06F2686850C2092BB /* Pods-GoJekContactsTests.release.xcconfig */,
+				911E0904B1C196F039120403 /* Pods-GoJekContactsUITests.debug.xcconfig */,
+				1442E97B5666656AE9246D2A /* Pods-GoJekContactsUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +192,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B70BAF22B0983A00CF9C6B /* Build configuration list for PBXNativeTarget "GoJekContacts" */;
 			buildPhases = (
+				2ADF1FA58E36703624CACE1E /* [CP] Check Pods Manifest.lock */,
 				93B70B8322B0983600CF9C6B /* Sources */,
 				93B70B8422B0983600CF9C6B /* Frameworks */,
 				93B70B8522B0983600CF9C6B /* Resources */,
+				E5165E2F2AA8942BA40E4E95 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +211,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B70BB222B0983A00CF9C6B /* Build configuration list for PBXNativeTarget "GoJekContactsTests" */;
 			buildPhases = (
+				504461416FBC3714ECF90584 /* [CP] Check Pods Manifest.lock */,
 				93B70B9722B0983A00CF9C6B /* Sources */,
 				93B70B9822B0983A00CF9C6B /* Frameworks */,
 				93B70B9922B0983A00CF9C6B /* Resources */,
@@ -167,6 +230,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B70BB522B0983A00CF9C6B /* Build configuration list for PBXNativeTarget "GoJekContactsUITests" */;
 			buildPhases = (
+				65733B18149FC04565948AAC /* [CP] Check Pods Manifest.lock */,
 				93B70BA222B0983A00CF9C6B /* Sources */,
 				93B70BA322B0983A00CF9C6B /* Frameworks */,
 				93B70BA422B0983A00CF9C6B /* Resources */,
@@ -251,12 +315,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2ADF1FA58E36703624CACE1E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoJekContacts-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		504461416FBC3714ECF90584 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoJekContactsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65733B18149FC04565948AAC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoJekContactsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5165E2F2AA8942BA40E4E95 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoJekContacts/Pods-GoJekContacts-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoJekContacts/Pods-GoJekContacts-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		93B70B8322B0983600CF9C6B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9338467D22B09C4C00B74A90 /* APIConnection.swift in Sources */,
+				9338467F22B09C7300B74A90 /* URLObject.swift in Sources */,
+				9338467B22B09C3300B74A90 /* DataFetcher.swift in Sources */,
 				93B70B8D22B0983600CF9C6B /* ViewController.swift in Sources */,
+				9338468122B0B35E00B74A90 /* DummyModal.swift in Sources */,
 				93B70B8B22B0983600CF9C6B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +591,7 @@
 		};
 		93B70BB022B0983A00CF9C6B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C1C4B495A6467E3817EBCC5 /* Pods-GoJekContacts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -447,6 +609,7 @@
 		};
 		93B70BB122B0983A00CF9C6B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81B55C99C9238679D883BC83 /* Pods-GoJekContacts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +627,7 @@
 		};
 		93B70BB322B0983A00CF9C6B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F43ACE4198FC13D0ABA3C1D8 /* Pods-GoJekContactsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -484,6 +648,7 @@
 		};
 		93B70BB422B0983A00CF9C6B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D980EE06F2686850C2092BB /* Pods-GoJekContactsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -504,6 +669,7 @@
 		};
 		93B70BB622B0983A00CF9C6B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 911E0904B1C196F039120403 /* Pods-GoJekContactsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -523,6 +689,7 @@
 		};
 		93B70BB722B0983A00CF9C6B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1442E97B5666656AE9246D2A /* Pods-GoJekContactsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
