@@ -1,0 +1,17 @@
+//
+//  ContactListCellViewModal.swift
+//  GoJekContacts
+//
+//  Created by ioshellboy on 13/06/19.
+//  Copyright © 2019 ioshellboy. All rights reserved.
+//
+
+import UIKit
+
+protocol ContactListCellViewModalProtocol {
+    var shortContact: ShortContactModal? {get set}
+}
+
+class ContactListCellViewModal: ContactListCellViewModalProtocol {
+    var shortContact: ShortContactModal?
+}

@@ -11,6 +11,6 @@ import UIKit
 
 struct URLObject: DataRequestorProtocol {
     var urlString: String?
-    var classToMap: Codable?
+//    var classToMap: Codable?
     var dataRequestType: DataRequestType = .get
 }

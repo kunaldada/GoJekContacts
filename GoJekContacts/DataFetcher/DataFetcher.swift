@@ -25,7 +25,7 @@ enum DataRequestType {
 
 protocol DataRequestorProtocol {
     var urlString: String? {get set}
-    var classToMap: Codable? {get set}
+//    var classToMap: Codable? {get set}
     var dataRequestType: DataRequestType {get set}
 }
 
@@ -37,7 +37,7 @@ final class DataFetcher {
         
     }
     
-    var apiConnection = APIConnection()
+    private let apiConnection = APIConnection()
     
     internal func fetchData<T: Codable>(dataRequestor: DataRequestorProtocol, success: ((_ response: T?) -> (Void))?, failure: ((_ error: Error?) -> (Void))?) {
         apiConnection.makeConnection(dataRequestor: dataRequestor) { (data, error, statusCode) -> (Void) in
