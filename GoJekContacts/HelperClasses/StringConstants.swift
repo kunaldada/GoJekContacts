@@ -18,3 +18,21 @@ struct ImageStringConstants{
     static let messageImageName: String = "message_button"
     static let placeHolderImageName: String = "placeholder_photo"
 }
+
+struct GenericStringConstants {
+    static let contactListViewNavigationTitle: String = "Contact"
+    static let contactListLeftNavigationButtonTitle: String = "Groups"
+    static let contactDetailRightNavigationButtonTitle: String = "Edit"
+    static let contactEditLeftNavigationButtonTitle: String = "Cancel"
+    static let contactEditRightNavigationButtonTitle: String = "Done"
+}
+
+struct CellReuseIdentifierConstants {
+    static let contactListTableViewCell: String = "ContactListTableViewCell"
+    static let contactDetailInfoTableViewCell: String = "ContactDetailInfoTableViewCell"
+    static let contactDetailProfileTableViewCell: String = "ContactDetailProfileTableViewCell"
+    static let editContactOtherInfoTableViewCell: String = "EditContactOtherInfoTableViewCell"
+    static let editContactProfileTableViewCell: String = "EditContactProfileTableViewCell"
+    
+}
+

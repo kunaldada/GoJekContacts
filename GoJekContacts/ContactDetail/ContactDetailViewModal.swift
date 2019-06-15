@@ -12,6 +12,7 @@ protocol ContactDetailViewModalProtocol {
     func setupWith(modal: ContactsDetailModalProtocol?)
     var cellViewModals: [ContactDetailCellViewModalProtocol]? {get set}
     var dataFetched: (() -> (Void))? {get set}
+    var updateWithDetailedContact: ((_ detailModal: ContactsDetailModalProtocol?) -> (Void))? {get set}
 }
 
 class ContactDetailViewModal: ContactDetailViewModalProtocol {
@@ -23,12 +24,16 @@ class ContactDetailViewModal: ContactDetailViewModalProtocol {
         }
     }
     var dataFetched: (() -> (Void))?
+    var updateWithDetailedContact: ((_ detailModal: ContactsDetailModalProtocol?) -> (Void))?
     
     func setupWith(modal: ContactsDetailModalProtocol?) {
         self.detailModal = modal
         self.initCellViewModals()
         if self.detailModal?.hasCompleteDisplayInfo == false {
             self.fetchCompleteContactDetails()
+        }
+        else {
+            self.updateWithDetailedContact?(self.detailModal)
         }
     }
     

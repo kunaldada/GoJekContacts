@@ -28,12 +28,6 @@ class ContactDetailProfileTableViewCell: UITableViewCell {
         
         self.nameLabel.text = self.cellViewModal?.detailModal?.fullName
         
-        self.profileImageView.image = UIImage(named:ImageStringConstants.placeHolderImageName)
-        let imageUrlObject = URLObject(urlString: self.cellViewModal?.detailModal?.profilePicUrlString, dataRequestType: .get)
-        DataFetcher.shared.fetchImage(dataRequestor: imageUrlObject, success: { (image) -> (Void) in
-            self.profileImageView.image = image
-        }, failure: nil)
-        
         self.emailButton.isUserInteractionEnabled = cellViewModal?.detailModal?.hasValidEmail ?? false
         let shouldShowMobile: Bool = cellViewModal?.detailModal?.hasValidMobile ?? false
         self.messageButton.isUserInteractionEnabled = shouldShowMobile
@@ -42,6 +36,18 @@ class ContactDetailProfileTableViewCell: UITableViewCell {
         let favoriteImageName = self.cellViewModal?.detailModal?.favoriteStatus == true ? ImageStringConstants.favSelectedImageName : ImageStringConstants.favUnselectedImageName
         self.favButton.setImage(UIImage(named: favoriteImageName), for: .normal)
         self.favButton.setImage(UIImage(named: favoriteImageName), for: .highlighted)
+
+        self.profileImageView.image = UIImage(named:ImageStringConstants.placeHolderImageName)
+
+        guard let profilePicUrlStr: String = self.cellViewModal?.detailModal?.profilePicUrlString,
+            profilePicUrlStr.isValidUrl() else {return}
+        
+        let imageUrlObject = URLObject(urlString: profilePicUrlStr, dataRequestType: .get)
+        DataFetcher.shared.fetchImage(dataRequestor: imageUrlObject, success: { (image) -> (Void) in
+            self.profileImageView.image = image
+        }, failure: nil)
+        
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

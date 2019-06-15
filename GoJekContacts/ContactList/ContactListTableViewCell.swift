@@ -32,10 +32,23 @@ class ContactListTableViewCell: UITableViewCell {
         self.titleLabel.text = shortContact.getFullName()
 
         favoriteImageView.isHidden = !shortContact.favorite
-        let imageUrlObject = URLObject(urlString: shortContact.profilePic, dataRequestType: .get)
+        
+        guard let profilePicUrlStr: String = shortContact.profilePic,
+            profilePicUrlStr.isValidUrl() else {return}
+
+        let imageUrlObject = URLObject(urlString: profilePicUrlStr, dataRequestType: .get)
         DataFetcher.shared.fetchImage(dataRequestor: imageUrlObject, success: { (image) -> (Void) in
             self.profileImageView.image = image
         }, failure: nil)
     }
     
+}
+
+extension String {
+    func isValidUrl() -> Bool {
+        let urlRegEx = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$"
+        let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
+        let result = urlTest.evaluate(with: self)
+        return result
+    }
 }

@@ -8,7 +8,7 @@
     
     import UIKit
     
-    protocol ContactsDetailModalProtocol {
+    protocol ContactsDetailModalProtocol: ContactsAddEditDetailModalProtocol {
         var fullName: String? {get}
         var contactIdentifier: Int? {get}
         var profilePicUrlString: String? {get}
@@ -24,11 +24,12 @@
         
         var viewModal: ContactDetailViewModalProtocol?
         var contactsDetailModal: ContactsDetailModalProtocol?
+        private var updatedContactsDetailModal: ContactsDetailModalProtocol?
         @IBOutlet weak var detailTableView: UITableView!
         override func viewDidLoad() {
             super.viewDidLoad()
-            self.detailTableView.register(UINib(nibName: "ContactDetailInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactDetailInfoTableViewCell")
-            self.detailTableView.register(UINib(nibName: "ContactDetailProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactDetailProfileTableViewCell")
+            self.detailTableView.register(UINib(nibName: CellReuseIdentifierConstants.contactDetailInfoTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.contactDetailInfoTableViewCell)
+            self.detailTableView.register(UINib(nibName: CellReuseIdentifierConstants.contactDetailProfileTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.contactDetailProfileTableViewCell)
             // Do any additional setup after loading the view.
         }
         
@@ -36,11 +37,35 @@
             guard let detailModal = detailModal else {return nil}
             super.init(nibName: "ContactDetailViewController", bundle: nil)
             self.contactsDetailModal = detailModal
+            self.initViewModal()
+            self.customizeNavigationBar()
+        }
+        
+        private func initViewModal() {
             self.viewModal = ContactDetailViewModal()
-            self.viewModal?.setupWith(modal: detailModal)
-            self.viewModal?.dataFetched = {
-                self.detailTableView.reloadData()
+            self.viewModal?.setupWith(modal: self.contactsDetailModal)
+            self.viewModal?.dataFetched = {[weak self] in
+                self?.detailTableView.reloadData()
             }
+            self.viewModal?.updateWithDetailedContact = {[weak self](updatedContactsDetailModal) in
+                self?.updatedContactsDetailModal = updatedContactsDetailModal
+            }
+        }
+        
+        private func customizeNavigationBar() {
+//            self.navigationController?.navigationBar.isTranslucent = true
+//            self.navigationController?.view.backgroundColor = .clear
+            let rightItem = UIBarButtonItem(title: GenericStringConstants.contactDetailRightNavigationButtonTitle, style: .plain, target: self, action: #selector(editContactPressed))
+            self.navigationItem.rightBarButtonItem = rightItem
+        }
+
+        @objc private func editContactPressed() {
+            guard  let  updatedContactsDetailModal = self.updatedContactsDetailModal else {
+                return
+            }
+            let editContactViewController = AddEditContactViewController(addEditModal: updatedContactsDetailModal)
+            let navigationController = UINavigationController(rootViewController: editContactViewController)
+            self.present(navigationController, animated: true, completion: nil)
         }
         
         required init?(coder aDecoder: NSCoder) {
@@ -70,13 +95,13 @@
             
             let cellViewModal = cellViewModalList[indexPath.row]
             if let profileCellViewModal = cellViewModal as? ContactDetailProfileCellViewModal {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ContactDetailProfileTableViewCell", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseIdentifierConstants.contactDetailProfileTableViewCell, for: indexPath)
                 (cell as? ContactDetailProfileTableViewCell)?.bindData(cellViewModal: profileCellViewModal)
                 cell.selectionStyle = .none
                 return cell
             }
             else if let infoCellViewModal = cellViewModal as? ContactDetailInfoCellViewModal {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ContactDetailInfoTableViewCell", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseIdentifierConstants.contactDetailInfoTableViewCell, for: indexPath)
                 (cell as? ContactDetailInfoTableViewCell)?.bindData(cellViewModal: infoCellViewModal)
                 cell.selectionStyle = .none
                 return cell
