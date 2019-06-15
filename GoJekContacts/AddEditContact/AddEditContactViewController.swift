@@ -31,6 +31,7 @@ class AddEditContactViewController: UIViewController {
     
     private func initViewModal() {
         self.viewModal = AddEditContactViewModal()
+        self.viewModal?.dataFetcher = DataFetcher.shared
         self.viewModal?.setupWith(modal: self.addEditModal)
         self.viewModal?.reloadTableData = {[weak self] in
             self?.addEditContactDetailTableView.reloadData()

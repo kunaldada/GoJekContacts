@@ -30,7 +30,12 @@ protocol DataRequestorProtocol {
     var appendedParameters: [String: String]? {get set}
 }
 
-final class DataFetcher {
+protocol DataFetcherProtocol {
+    func fetchData<T: Codable>(dataRequestor: DataRequestorProtocol, success: ((_ response: T?) -> (Void))?, failure: ((_ error: Error?) -> (Void))?)
+    func fetchImage(dataRequestor: DataRequestorProtocol, success: ((_ response: UIImage?) -> (Void))?, failure: ((_ error: Error?) -> (Void))?)
+}
+
+final class DataFetcher: DataFetcherProtocol {
     
     static let shared = DataFetcher()
     

@@ -27,7 +27,7 @@ class ContactListViewModal: ContactListViewModalProtocol {
     
     var existingTitles: [String] = []
     var groupedShortContacts: [[ShortContactModal]] = []
-    private var shortContacts: [ShortContactModal]? {
+    var shortContacts: [ShortContactModal]? {
         didSet {
             self.prepareCellViewModals()
         }
@@ -45,7 +45,7 @@ class ContactListViewModal: ContactListViewModalProtocol {
         }, failure: nil)
     }
     
-    private func prepareCellViewModals() {
+    func prepareCellViewModals() {
         
         guard let shortContactList = self.shortContacts else {
             return

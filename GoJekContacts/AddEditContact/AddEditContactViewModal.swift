@@ -10,6 +10,7 @@ import UIKit
 
 protocol AddEditContactViewModalProtocol {
     var cellViewModals: [AddEditContactCellViewModalProtocol]? {get set}
+    var dataFetcher: DataFetcherProtocol? {get set}
     func setupWith(modal: ContactsAddEditDetailModalProtocol?)
     var reloadTableData: (() -> (Void))? {get set}
     func validateAllDataAndSync()
@@ -86,7 +87,9 @@ class AddEditContactViewModal: AddEditContactViewModalProtocol {
     var reloadTableData: (() -> (Void))?
     var validationCallBlock: ((_ syncSuccessfull: Bool,_ updatedContact: ContactsAddEditDetailModalProtocol?, _ errorMsg: String?) -> (Void))?
 
-    private var changedInfoValues: [ContactKeys: String] = [:]
+    var dataFetcher: DataFetcherProtocol?
+    
+    var changedInfoValues: [ContactKeys: String] = [:]
     
     func setupWith(modal: ContactsAddEditDetailModalProtocol?) {
         self.detailModal = modal
@@ -170,10 +173,9 @@ class AddEditContactViewModal: AddEditContactViewModalProtocol {
     }
 
     private func putDataToServer(contactId: Int, appendedParameters: [String: String]) {
-        let dataFetcher = DataFetcher.shared
         let urlString = String(format: "http://gojek-contacts-app.herokuapp.com/contacts/%@.json", String(contactId))
         let urlObject = URLObject(urlString: urlString, dataRequestType: .put, appendedParameters: appendedParameters)
-        dataFetcher.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
+        dataFetcher?.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
             if let reponse = response {
                 self?.validationCallBlock?(true, reponse, nil)
             }
@@ -186,9 +188,8 @@ class AddEditContactViewModal: AddEditContactViewModalProtocol {
     }
     
     private func postDataToServer(appendedParameters: [String: String]) {
-        let dataFetcher = DataFetcher.shared
         let urlObject = URLObject(urlString: "http://gojek-contacts-app.herokuapp.com/contacts.json", dataRequestType: .post, appendedParameters: appendedParameters)
-        dataFetcher.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
+        dataFetcher?.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
             if let reponse = response {
                 self?.validationCallBlock?(true, reponse, nil)
             }

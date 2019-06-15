@@ -27,7 +27,24 @@ class GoJekContactsUITests: XCTestCase {
     }
 
     func testExample() {
-        // Use recording to get started writing UI tests.
+        
+//        let tableIndexElement = XCUIApplication().tables.otherElements["table index"]
+//        tableIndexElement.tap()
+//        tableIndexElement.tap()
+        
+//        let app = XCUIApplication()
+//        let tablesQuery = app.tables
+//        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["aaaaaaa1 babba"]/*[[".cells.staticTexts[\"aaaaaaa1 babba\"]",".staticTexts[\"aaaaaaa1 babba\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+//        app.otherElements.containing(.navigationBar, identifier:"Contact").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .table).element.swipeUp()
+//
+//        let contactNavigationBar = app.navigationBars["Contact"]
+//        contactNavigationBar.buttons["Contact"].tap()
+//        tablesQuery.staticTexts["aaaaaaaaaaaa aaaaaaaaaaa"].tap()
+//        contactNavigationBar.buttons["Edit"].tap()
+//        tablesQuery.cells.containing(.staticText, identifier:"First Name").children(matching: .textField).element.tap()
+//        app.navigationBars["GoJekContacts.AddEditContactView"].buttons["Cancel"].tap()
+//        tablesQuery/*@START_MENU_TOKEN@*/.buttons["favourite button"]/*[[".cells.buttons[\"favourite button\"]",".buttons[\"favourite button\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+                    // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 

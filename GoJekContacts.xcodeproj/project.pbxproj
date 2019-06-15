@@ -14,6 +14,7 @@
 		9308F2A722B33366007A3A38 /* ContactDetailCellViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308F2A622B33366007A3A38 /* ContactDetailCellViewModal.swift */; };
 		9308F2AA22B33ECC007A3A38 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308F2A922B33ECC007A3A38 /* StringConstants.swift */; };
 		933619FE22B5116B00FBA450 /* ColorConstantFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933619FD22B5116B00FBA450 /* ColorConstantFile.swift */; };
+		93361A0E22B5664400FBA450 /* MockDataFetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93361A0D22B5664400FBA450 /* MockDataFetcherProtocol.swift */; };
 		9338467B22B09C3300B74A90 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338467A22B09C3300B74A90 /* DataFetcher.swift */; };
 		9338467D22B09C4C00B74A90 /* APIConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338467C22B09C4C00B74A90 /* APIConnection.swift */; };
 		9338467F22B09C7300B74A90 /* URLObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338467E22B09C7300B74A90 /* URLObject.swift */; };
@@ -77,6 +78,7 @@
 		9308F2A622B33366007A3A38 /* ContactDetailCellViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailCellViewModal.swift; sourceTree = "<group>"; };
 		9308F2A922B33ECC007A3A38 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		933619FD22B5116B00FBA450 /* ColorConstantFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstantFile.swift; sourceTree = "<group>"; };
+		93361A0D22B5664400FBA450 /* MockDataFetcherProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataFetcherProtocol.swift; sourceTree = "<group>"; };
 		9338467A22B09C3300B74A90 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		9338467C22B09C4C00B74A90 /* APIConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConnection.swift; sourceTree = "<group>"; };
 		9338467E22B09C7300B74A90 /* URLObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLObject.swift; sourceTree = "<group>"; };
@@ -160,6 +162,14 @@
 				933619FD22B5116B00FBA450 /* ColorConstantFile.swift */,
 			);
 			path = HelperClasses;
+			sourceTree = "<group>";
+		};
+		93361A0F22B5681500FBA450 /* SupportingMocks */ = {
+			isa = PBXGroup;
+			children = (
+				93361A0D22B5664400FBA450 /* MockDataFetcherProtocol.swift */,
+			);
+			path = SupportingMocks;
 			sourceTree = "<group>";
 		};
 		9338467922B09C1300B74A90 /* DataFetcher */ = {
@@ -251,6 +261,7 @@
 				9338467922B09C1300B74A90 /* DataFetcher */,
 				93B70B8A22B0983600CF9C6B /* AppDelegate.swift */,
 				93B70B8E22B0983600CF9C6B /* Main.storyboard */,
+				93361A0F22B5681500FBA450 /* SupportingMocks */,
 				9308F2A822B33EB4007A3A38 /* HelperClasses */,
 				9338468F22B1DDA300B74A90 /* Modals */,
 				9338468622B1D9A600B74A90 /* ContactList */,
@@ -531,6 +542,7 @@
 			files = (
 				9338467D22B09C4C00B74A90 /* APIConnection.swift in Sources */,
 				9338468C22B1DC6B00B74A90 /* ContactListCellViewModal.swift in Sources */,
+				93361A0E22B5664400FBA450 /* MockDataFetcherProtocol.swift in Sources */,
 				9308F2AA22B33ECC007A3A38 /* StringConstants.swift in Sources */,
 				9338468922B1D9FD00B74A90 /* ContactListTableViewCell.swift in Sources */,
 				9338467F22B09C7300B74A90 /* URLObject.swift in Sources */,
