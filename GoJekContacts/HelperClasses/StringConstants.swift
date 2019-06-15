@@ -25,6 +25,7 @@ struct GenericStringConstants {
     static let contactDetailRightNavigationButtonTitle: String = "Edit"
     static let contactEditLeftNavigationButtonTitle: String = "Cancel"
     static let contactEditRightNavigationButtonTitle: String = "Done"
+    static let networkProblem: String = "Some Error Occurred."
 }
 
 struct CellReuseIdentifierConstants {
@@ -33,6 +34,6 @@ struct CellReuseIdentifierConstants {
     static let contactDetailProfileTableViewCell: String = "ContactDetailProfileTableViewCell"
     static let editContactOtherInfoTableViewCell: String = "EditContactOtherInfoTableViewCell"
     static let editContactProfileTableViewCell: String = "EditContactProfileTableViewCell"
-    
 }
+
 

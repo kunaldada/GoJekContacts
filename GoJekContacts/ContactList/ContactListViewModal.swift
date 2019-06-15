@@ -23,19 +23,24 @@ class ContactListViewModal: ContactListViewModalProtocol {
         }
     }
     
-    var shortContacts: [ShortContactModal]? {
-        didSet {
-            prepareCellViewModals()
-        }
-    }
+//    var groupedShortContactsDi
+    var shortContacts: [ShortContactModal]?
     
     var dataFetched: (() -> (Void))?
     
     internal func getContactsList() {
         let dataFetcher = DataFetcher.shared
-        let urlObject = URLObject(urlString: "http://gojek-contacts-app.herokuapp.com/contacts.json", dataRequestType: .get)
+        let urlObject = URLObject(urlString: "http://gojek-contacts-app.herokuapp.com/contacts.json", dataRequestType: .get, appendedParameters: nil)
         dataFetcher.fetchData(dataRequestor: urlObject, success: { (response: [ShortContactModal]?) -> (Void) in
+//            if let response: [ShortContactModal] = response {
+//                let groupedDictionary = Dictionary(grouping: response) { $0.firstName?.prefix(1) }
+//            }
+//
+//
+//            self.shortContacts?.sort(by: {$0.firstName > $1.firstName})
             self.shortContacts = response
+            self.prepareCellViewModals()
+
         }) { (error) -> (Void) in
             
         }

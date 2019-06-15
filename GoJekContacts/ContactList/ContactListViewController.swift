@@ -12,6 +12,8 @@ class ContactListViewController: UIViewController {
 
     @IBOutlet weak var contactListTableView: UITableView!
     var viewModal: ContactListViewModalProtocol? = ContactListViewModal()
+    private var indexTitles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

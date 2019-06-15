@@ -22,6 +22,7 @@ class ContactListTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height*0.5
+        self.profileImageView.contentMode = .scaleAspectFill
         // Configure the view for the selected state
     }
     
@@ -36,7 +37,7 @@ class ContactListTableViewCell: UITableViewCell {
         guard let profilePicUrlStr: String = shortContact.profilePic,
             profilePicUrlStr.isValidUrl() else {return}
 
-        let imageUrlObject = URLObject(urlString: profilePicUrlStr, dataRequestType: .get)
+        let imageUrlObject = URLObject(urlString: profilePicUrlStr, dataRequestType: .get, appendedParameters: nil)
         DataFetcher.shared.fetchImage(dataRequestor: imageUrlObject, success: { (image) -> (Void) in
             self.profileImageView.image = image
         }, failure: nil)

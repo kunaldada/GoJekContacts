@@ -9,19 +9,25 @@
 import UIKit
 
 protocol AddEditContactCellViewModalProtocol {
-    var infoKey: String? {get set}
-    var displayKey: String? {get set}
+    var contactKey: ContactKeys? {get set}
     var infoValue: String? {get set}
+    var valueChangedBlock: ((_ contactKey: ContactKeys?, _ updatedValue: String?) -> (Void))? {get set}
 }
 
 class AddEditContactProfileCellViewModal: AddEditContactCellViewModalProtocol {
-    var infoKey: String?
-    var displayKey: String?
+    var contactKey: ContactKeys?
     var infoValue: String?
+    var valueChangedBlock: ((_ contactKey: ContactKeys?, _ updatedValue: String?) -> (Void))?
 }
 
 class AddEditContactOtherInfoCellViewModal: AddEditContactCellViewModalProtocol {
-    var infoKey: String?
-    var displayKey: String?
+    var contactKey: ContactKeys?
     var infoValue: String?
+    var valueChangedBlock: ((_ contactKey: ContactKeys?, _ updatedValue: String?) -> (Void))?
+    
+    func updateValue(updatedValue: String?) {
+        if infoValue != updatedValue {
+            self.valueChangedBlock?(self.contactKey, updatedValue)
+        }
+    }
 }

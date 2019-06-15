@@ -35,6 +35,17 @@ class AddEditContactViewController: UIViewController {
         self.viewModal?.reloadTableData = {[weak self] in
             self?.addEditContactDetailTableView.reloadData()
         }
+        self.viewModal?.validationCallBlock = {(syncSuccessfull: Bool, updatedContact: ContactsAddEditDetailModalProtocol?, errorMsg: String?) in
+            if let errorMsg = errorMsg {
+                self.showErrorMessage(errorMessage: errorMsg)
+            }
+            else if let serverErrors = updatedContact?.errors, serverErrors.count > 0 {
+                self.showErrorMessage(errorMessage: serverErrors[0])
+            }
+            else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,11 +62,17 @@ class AddEditContactViewController: UIViewController {
     }
     
     @objc private func donePressed() {
-        self.dismiss(animated: true, completion: nil)
+        self.viewModal?.validateAllDataAndSync()
     }
 
     @objc private func cancelPressed() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func showErrorMessage(errorMessage: String) {
+        let alert: UIAlertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -120,4 +137,5 @@ protocol ContactsAddEditDetailModalProtocol {
     var profilePicUrlString: String? {get}
     var mobileNumber: String? {get}
     var emailAddress: String? {get}
+    var errors: [String]? {get}
 }

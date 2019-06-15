@@ -60,7 +60,7 @@ class ContactDetailViewModal: ContactDetailViewModalProtocol {
         
         let urlString = String(format: "https://gojek-contacts-app.herokuapp.com/contacts/%@.json", String(contactId))
         let dataFetcher = DataFetcher.shared
-        let urlObject = URLObject(urlString: urlString, dataRequestType: .get)
+        let urlObject = URLObject(urlString: urlString, dataRequestType: .get, appendedParameters: nil)
         dataFetcher.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
             self?.setupWith(modal: response)
         }) { (error) -> (Void) in

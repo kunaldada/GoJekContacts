@@ -70,6 +70,10 @@ final class APIConnection {
         var request: URLRequest = URLRequest(url: url)
         request.httpMethod = dataRequestor.dataRequestType.getAssociatedString
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let appendedParameters = dataRequestor.appendedParameters {
+            let jsonData = try? JSONSerialization.data(withJSONObject: appendedParameters)
+            request.httpBody = jsonData
+        }
         return request
     }
     

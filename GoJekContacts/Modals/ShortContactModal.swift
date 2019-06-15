@@ -16,6 +16,8 @@ struct ShortContactModal: Codable {
     let profilePic: String?
     let favorite: Bool = false
     let url: String?
+    let errors: [String]?
+    
     var fullName: String? {
         return self.getFullName()
     }
@@ -27,6 +29,7 @@ struct ShortContactModal: Codable {
         case profilePic = "profile_pic"
         case favorite
         case url
+        case errors
     }
     
     internal func getFullName() -> String {

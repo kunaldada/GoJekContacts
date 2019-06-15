@@ -16,6 +16,7 @@ struct ContactModal: Codable {
     let favorite: Bool = false
     let email: String?
     let phoneNumber: String?
+    let errors: [String]?
     
     private enum CodingKeys : String, CodingKey {
         case contactId = "id"
@@ -25,6 +26,7 @@ struct ContactModal: Codable {
         case favorite
         case email
         case phoneNumber = "phone_number"
+        case errors
     }
     
     internal func getFullName() -> String {
