@@ -12,7 +12,6 @@ class ContactListViewController: UIViewController {
 
     @IBOutlet weak var contactListTableView: UITableView!
     var viewModal: ContactListViewModalProtocol? = ContactListViewModal()
-    private var indexTitles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
     
     override func viewDidLoad() {
@@ -46,14 +45,22 @@ class ContactListViewController: UIViewController {
     }
 }
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.viewModal?.cellViewModals?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let totalList = self.viewModal?.cellViewModals, totalList.count > section {
+            return totalList[section].count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier: String = CellReuseIdentifierConstants.contactListTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        (cell as? ContactListTableViewCell)?.bindData(cellViewModal: viewModal?.cellViewModals?[indexPath.row])
+        (cell as? ContactListTableViewCell)?.bindData(cellViewModal: viewModal?.cellViewModals?[indexPath.section][indexPath.row])
         cell.selectionStyle = .none
         return cell
     }
@@ -63,14 +70,27 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cellViewModalsList = viewModal?.cellViewModals,
-            cellViewModalsList.count > indexPath.row else {return}
+        guard let cellViewModalsAllList = viewModal?.cellViewModals,
+                    cellViewModalsAllList.count > indexPath.section,
+                            cellViewModalsAllList[indexPath.section].count > indexPath.row else {return}
         
-        guard let detailViewModal = cellViewModalsList[indexPath.row].shortContact else {return}
+        guard let detailViewModal = cellViewModalsAllList[indexPath.section][indexPath.row].shortContact else {return}
         
         if let detailViewController = ContactDetailViewController(detailModal: detailViewModal) {
             self.navigationController?.pushViewController(detailViewController, animated: true)
         }
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.viewModal?.existingTitles[section]
+    }
+
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return self.viewModal?.indexTitles
+    }
+
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return self.viewModal?.indexTitles.firstIndex(of: title) ?? 0
     }
 
 }
