@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		32199B2F8D611DC2C422336D /* Pods_GoJekContacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEABADEC20B60694FB53182 /* Pods_GoJekContacts.framework */; };
 		5585071DC63D2A96B6F56DF5 /* Pods_GoJekContactsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB457FA4D7C188512C48457 /* Pods_GoJekContactsTests.framework */; };
+		9308F2A322B331CD007A3A38 /* ContactModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308F2A222B331CD007A3A38 /* ContactModal.swift */; };
+		9308F2A522B332C9007A3A38 /* ContactDetailViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308F2A422B332C9007A3A38 /* ContactDetailViewModal.swift */; };
+		9308F2A722B33366007A3A38 /* ContactDetailCellViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308F2A622B33366007A3A38 /* ContactDetailCellViewModal.swift */; };
+		9308F2AA22B33ECC007A3A38 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308F2A922B33ECC007A3A38 /* StringConstants.swift */; };
 		9338467B22B09C3300B74A90 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338467A22B09C3300B74A90 /* DataFetcher.swift */; };
 		9338467D22B09C4C00B74A90 /* APIConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338467C22B09C4C00B74A90 /* APIConnection.swift */; };
 		9338467F22B09C7300B74A90 /* URLObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338467E22B09C7300B74A90 /* URLObject.swift */; };
@@ -61,6 +65,10 @@
 		5C1C4B495A6467E3817EBCC5 /* Pods-GoJekContacts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoJekContacts.debug.xcconfig"; path = "Target Support Files/Pods-GoJekContacts/Pods-GoJekContacts.debug.xcconfig"; sourceTree = "<group>"; };
 		81B55C99C9238679D883BC83 /* Pods-GoJekContacts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoJekContacts.release.xcconfig"; path = "Target Support Files/Pods-GoJekContacts/Pods-GoJekContacts.release.xcconfig"; sourceTree = "<group>"; };
 		911E0904B1C196F039120403 /* Pods-GoJekContactsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoJekContactsUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoJekContactsUITests/Pods-GoJekContactsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9308F2A222B331CD007A3A38 /* ContactModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModal.swift; sourceTree = "<group>"; };
+		9308F2A422B332C9007A3A38 /* ContactDetailViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewModal.swift; sourceTree = "<group>"; };
+		9308F2A622B33366007A3A38 /* ContactDetailCellViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailCellViewModal.swift; sourceTree = "<group>"; };
+		9308F2A922B33ECC007A3A38 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		9338467A22B09C3300B74A90 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		9338467C22B09C4C00B74A90 /* APIConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConnection.swift; sourceTree = "<group>"; };
 		9338467E22B09C7300B74A90 /* URLObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLObject.swift; sourceTree = "<group>"; };
@@ -131,6 +139,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9308F2A822B33EB4007A3A38 /* HelperClasses */ = {
+			isa = PBXGroup;
+			children = (
+				9308F2A922B33ECC007A3A38 /* StringConstants.swift */,
+			);
+			path = HelperClasses;
+			sourceTree = "<group>";
+		};
 		9338467922B09C1300B74A90 /* DataFetcher */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				9338468D22B1DD9E00B74A90 /* ShortContactModal.swift */,
+				9308F2A222B331CD007A3A38 /* ContactModal.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -166,10 +183,12 @@
 			children = (
 				9338469322B2096300B74A90 /* ContactDetailViewController.swift */,
 				9338469422B2096300B74A90 /* ContactDetailViewController.xib */,
+				9308F2A422B332C9007A3A38 /* ContactDetailViewModal.swift */,
 				9338469722B209B200B74A90 /* ContactDetailProfileTableViewCell.swift */,
 				9338469822B209B200B74A90 /* ContactDetailProfileTableViewCell.xib */,
 				9338469B22B209C400B74A90 /* ContactDetailInfoTableViewCell.swift */,
 				9338469C22B209C400B74A90 /* ContactDetailInfoTableViewCell.xib */,
+				9308F2A622B33366007A3A38 /* ContactDetailCellViewModal.swift */,
 			);
 			path = ContactDetail;
 			sourceTree = "<group>";
@@ -201,6 +220,7 @@
 			children = (
 				9338467922B09C1300B74A90 /* DataFetcher */,
 				93B70B8A22B0983600CF9C6B /* AppDelegate.swift */,
+				9308F2A822B33EB4007A3A38 /* HelperClasses */,
 				9338468F22B1DDA300B74A90 /* Modals */,
 				9338468022B0B35E00B74A90 /* DummyModal.swift */,
 				9338468622B1D9A600B74A90 /* ContactList */,
@@ -479,10 +499,12 @@
 			files = (
 				9338467D22B09C4C00B74A90 /* APIConnection.swift in Sources */,
 				9338468C22B1DC6B00B74A90 /* ContactListCellViewModal.swift in Sources */,
+				9308F2AA22B33ECC007A3A38 /* StringConstants.swift in Sources */,
 				9338468922B1D9FD00B74A90 /* ContactListTableViewCell.swift in Sources */,
 				9338467F22B09C7300B74A90 /* URLObject.swift in Sources */,
 				9338467B22B09C3300B74A90 /* DataFetcher.swift in Sources */,
 				93B70B8D22B0983600CF9C6B /* ViewController.swift in Sources */,
+				9308F2A722B33366007A3A38 /* ContactDetailCellViewModal.swift in Sources */,
 				9338468122B0B35E00B74A90 /* DummyModal.swift in Sources */,
 				9338468522B1D9A100B74A90 /* ContactListViewModal.swift in Sources */,
 				9338468322B1D8F100B74A90 /* ContactListViewController.swift in Sources */,
@@ -490,6 +512,8 @@
 				93B70B8B22B0983600CF9C6B /* AppDelegate.swift in Sources */,
 				9338469522B2096300B74A90 /* ContactDetailViewController.swift in Sources */,
 				9338468E22B1DD9E00B74A90 /* ShortContactModal.swift in Sources */,
+				9308F2A322B331CD007A3A38 /* ContactModal.swift in Sources */,
+				9308F2A522B332C9007A3A38 /* ContactDetailViewModal.swift in Sources */,
 				9338469D22B209C400B74A90 /* ContactDetailInfoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

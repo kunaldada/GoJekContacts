@@ -32,11 +32,23 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         let reuseIdentifier: String = "ContactListTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         (cell as? ContactListTableViewCell)?.bindData(cellViewModal: viewModal?.cellViewModals?[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cellViewModalsList = viewModal?.cellViewModals,
+            cellViewModalsList.count > indexPath.row else {return}
+        
+        guard let detailViewModal = cellViewModalsList[indexPath.row].shortContact as? ContactsDetailModalProtocol else {return}
+        
+        if let detailViewController = ContactDetailViewController(detailModal: detailViewModal) {
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+        }
     }
 
 }

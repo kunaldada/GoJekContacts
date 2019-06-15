@@ -15,6 +15,7 @@ class ContactListTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.favoriteImageView.image = UIImage(named: ImageStringConstants.homeFavImageName)
         // Initialization code
     }
 
@@ -25,11 +26,12 @@ class ContactListTableViewCell: UITableViewCell {
     }
     
     func bindData(cellViewModal: ContactListCellViewModalProtocol?) {
+        self.profileImageView.image = UIImage(named:ImageStringConstants.placeHolderImageName)
+        
         guard let shortContact = cellViewModal?.shortContact else {return}
         self.titleLabel.text = shortContact.getFullName()
-        let favImageName = shortContact.favorite ? "favourite_button_selected" : "favourite_button"
-        self.favoriteImageView.image = UIImage(named: favImageName)
-        
+
+        favoriteImageView.isHidden = !shortContact.favorite
         let imageUrlObject = URLObject(urlString: shortContact.profilePic, dataRequestType: .get)
         DataFetcher.shared.fetchImage(dataRequestor: imageUrlObject, success: { (image) -> (Void) in
             self.profileImageView.image = image

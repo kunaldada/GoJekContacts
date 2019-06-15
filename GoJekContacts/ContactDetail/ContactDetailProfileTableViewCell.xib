@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ContactDetailProfileTableViewCell" customModule="GoJekContacts" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactDetailProfileTableViewCell" id="KGk-i7-Jjw" customClass="ContactDetailProfileTableViewCell" customModule="GoJekContacts" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="271"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -146,6 +146,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="callButton" destination="VrG-mg-iEU" id="LBN-6V-ywv"/>
+                <outlet property="emailButton" destination="42G-9V-9t0" id="Vsi-bq-jVI"/>
+                <outlet property="favButton" destination="eRw-rX-y3E" id="qjW-An-ZcL"/>
+                <outlet property="messageButton" destination="xoD-2o-FSo" id="AlI-iv-PjY"/>
                 <outlet property="nameLabel" destination="RXJ-m9-Kti" id="dCh-jx-od7"/>
                 <outlet property="profileImageView" destination="M1m-NW-QdR" id="d6z-cx-1IQ"/>
             </connections>
