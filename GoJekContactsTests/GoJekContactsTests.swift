@@ -42,14 +42,15 @@ class GoJekContactsTests: XCTestCase {
     }
     
     func testShortContactModalGroupings() {
-        let contact1 = ShortContactModal(contactId: nil, firstName: "Abhishek", lastName: nil, profilePic: nil, url: nil, errors: nil)
-        let contact2 = ShortContactModal(contactId: nil, firstName: "Arijit", lastName: nil, profilePic: nil, url: nil, errors: nil)
-        let contact3 = ShortContactModal(contactId: nil, firstName: "Ramesh", lastName: nil, profilePic: nil, url: nil, errors: nil)
-        let contact4 = ShortContactModal(contactId: nil, firstName: "rakesh", lastName: nil, profilePic: nil, url: nil, errors: nil)
-        let contact5 = ShortContactModal(contactId: nil, firstName: "123", lastName: nil, profilePic: nil, url: nil, errors: nil)
-        let contact6 = ShortContactModal(contactId: nil, firstName: "@naiyo", lastName: nil, profilePic: nil, url: nil, errors: nil)
+        let contact1 = ShortContactModal(contactId: nil, firstName: "Abhishek", lastName: nil, profilePic: nil, favorite: nil, url: nil, errors: nil)
+        let contact2 = ShortContactModal(contactId: nil, firstName: "Arijit", lastName: nil, profilePic: nil, favorite: nil, url: nil, errors: nil)
+        let contact3 = ShortContactModal(contactId: nil, firstName: "Ramesh", lastName: nil, profilePic: nil, favorite: nil, url: nil, errors: nil)
+        let contact4 = ShortContactModal(contactId: nil, firstName: "rakesh", lastName: nil, profilePic: nil, favorite: nil, url: nil, errors: nil)
+        let contact5 = ShortContactModal(contactId: nil, firstName: "123", lastName: nil, profilePic: nil, favorite: nil, url: nil, errors: nil)
+        let contact6 = ShortContactModal(contactId: nil, firstName: "@naiyo", lastName: nil, profilePic: nil, favorite: nil, url: nil, errors: nil)
         
         contactListViewModal?.shortContacts = [contact1, contact3, contact5, contact2, contact4, contact6]
+        contactListViewModal?.prepareCellViewModals()
         
         var expectedGrouping: [[ShortContactModal]] = []
         expectedGrouping.append([contact1, contact2])
@@ -70,7 +71,7 @@ class GoJekContactsTests: XCTestCase {
     }
     
     func testEditContactFlow() {
-        let existingContact: ContactModal = ContactModal(contactId: 1, firstName: "Abhishek", lastName: nil, profilePic: nil, email: nil, phoneNumber: nil, errors: nil)
+        let existingContact: ContactModal = ContactModal(contactId: 1, firstName: "Abhishek", lastName: nil, profilePic: nil, favorite: nil, email: nil, phoneNumber: nil, errors: nil)
         
         var changedInfoValues: [ContactKeys: String] = [:]
         changedInfoValues[ContactKeys.firstName] = "Abhishekk"
@@ -78,7 +79,7 @@ class GoJekContactsTests: XCTestCase {
         changedInfoValues[ContactKeys.email] = "abhishek@gmail.com"
         changedInfoValues[ContactKeys.phoneNumber] = "9876543210"
         
-        let updatedContact: ContactModal = ContactModal(contactId: 1, firstName: changedInfoValues[ContactKeys.firstName], lastName: changedInfoValues[ContactKeys.lastName] , profilePic: nil, email: changedInfoValues[ContactKeys.email], phoneNumber: changedInfoValues[ContactKeys.phoneNumber], errors: nil)
+        let updatedContact: ContactModal = ContactModal(contactId: 1, firstName: changedInfoValues[ContactKeys.firstName], lastName: changedInfoValues[ContactKeys.lastName] , profilePic: nil, favorite: nil, email: changedInfoValues[ContactKeys.email], phoneNumber: changedInfoValues[ContactKeys.phoneNumber], errors: nil)
         
         mockDataFetcher.expectedDataResponse = (updatedContact, nil)
         
@@ -95,7 +96,7 @@ class GoJekContactsTests: XCTestCase {
         
         XCTAssertEqual(mockDataFetcher.updatedDataRequestor?.dataRequestType, DataRequestType.put, "Data call for put not going")
         
-        let apiFirstNameParam: String? = mockDataFetcher.updatedDataRequestor?.appendedParameters?[ContactKeys.firstName.postingValue]
+        let apiFirstNameParam: String? = mockDataFetcher.updatedDataRequestor?.appendedParameters?[ContactKeys.firstName.postingValue] as? String
         XCTAssertEqual(apiFirstNameParam, changedInfoValues[ContactKeys.firstName], "Text Field entry does not matches the paramtere posted to the server")
     }
 
@@ -107,7 +108,7 @@ class GoJekContactsTests: XCTestCase {
         changedInfoValues[ContactKeys.email] = "abhishek@gmail.com"
         changedInfoValues[ContactKeys.phoneNumber] = "9876543210"
         
-        let updatedContact: ContactModal = ContactModal(contactId: 1, firstName: changedInfoValues[ContactKeys.firstName], lastName: changedInfoValues[ContactKeys.lastName] , profilePic: nil, email: changedInfoValues[ContactKeys.email], phoneNumber: changedInfoValues[ContactKeys.phoneNumber], errors: nil)
+        let updatedContact: ContactModal = ContactModal(contactId: 1, firstName: changedInfoValues[ContactKeys.firstName], lastName: changedInfoValues[ContactKeys.lastName] , profilePic: nil, favorite: nil, email: changedInfoValues[ContactKeys.email], phoneNumber: changedInfoValues[ContactKeys.phoneNumber], errors: nil)
         
         mockDataFetcher.expectedDataResponse = (updatedContact, nil)
         
@@ -122,7 +123,7 @@ class GoJekContactsTests: XCTestCase {
         
         XCTAssertEqual(mockDataFetcher.updatedDataRequestor?.dataRequestType, DataRequestType.post, "Data call for post not going")
         
-        let apiFirstNameParam: String? = mockDataFetcher.updatedDataRequestor?.appendedParameters?[ContactKeys.firstName.postingValue]
+        let apiFirstNameParam: String? = mockDataFetcher.updatedDataRequestor?.appendedParameters?[ContactKeys.firstName.postingValue] as? String
         XCTAssertEqual(apiFirstNameParam, changedInfoValues[ContactKeys.firstName], "Text Field entry does not matches the paramtere posted to the server")
         
     }
