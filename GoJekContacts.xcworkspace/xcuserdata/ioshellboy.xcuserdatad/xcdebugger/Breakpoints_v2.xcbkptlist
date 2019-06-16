@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoJekContacts/ContactList/ContactListViewModal.swift"
-            timestampString = "582353981.786109"
+            timestampString = "582354798.890903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "updateContact(existingIndexPath:newContact:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoJekContacts/ContactList/ContactListViewController.swift"
-            timestampString = "582353981.786536"
+            timestampString = "582354798.8913749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoJekContacts/ContactDetail/ContactDetailViewController.swift"
-            timestampString = "582353981.7868381"
+            filePath = "GoJekContacts/ContactDetail/ContactDetailViewModal.swift"
+            timestampString = "582354798.891714"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "editContactPressed()"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "setupWith(modal:transmitChanges:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

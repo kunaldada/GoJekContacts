@@ -19,21 +19,19 @@ class AddEditContactViewController: UIViewController {
         super.viewDidLoad()
         self.addEditContactDetailTableView.register(UINib(nibName: CellReuseIdentifierConstants.editContactOtherInfoTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.editContactOtherInfoTableViewCell)
         self.addEditContactDetailTableView.register(UINib(nibName: CellReuseIdentifierConstants.editContactProfileTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.editContactProfileTableViewCell)
-        
+        self.initViewModal()
         // Do any additional setup after loading the view.
     }
 
     init(addEditModal: ContactsAddEditDetailModalProtocol?) {
         super.init(nibName: "AddEditContactViewController", bundle: nil)
         self.addEditModal = addEditModal
-        self.initViewModal()
         self.customizeNavigationBar()
     }
     
     private func initViewModal() {
         self.viewModal = AddEditContactViewModal()
         self.viewModal?.dataFetcher = DataFetcher.shared
-        self.viewModal?.setupWith(modal: self.addEditModal)
         self.viewModal?.reloadTableData = {[weak self] in
             self?.addEditContactDetailTableView.reloadData()
         }
@@ -49,6 +47,7 @@ class AddEditContactViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+        self.viewModal?.setupWith(modal: self.addEditModal)
     }
     
     required init?(coder aDecoder: NSCoder) {

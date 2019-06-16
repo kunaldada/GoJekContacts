@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 protocol ContactDetailViewModalProtocol {
     func setupWith(modal: ContactsDetailModalProtocol?)
@@ -73,10 +74,13 @@ class ContactDetailViewModal: ContactDetailViewModalProtocol {
         
         let urlString = String(format: "https://gojek-contacts-app.herokuapp.com/contacts/%@.json", String(contactId))
         let urlObject = URLObject(urlString: urlString, dataRequestType: .get, appendedParameters: nil)
+        SVProgressHUD.setDefaultMaskType(.gradient)
+        SVProgressHUD.show()
         dataFetcher?.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
+            SVProgressHUD.dismiss()
             self?.setupWith(modal: response, transmitChanges: false)
         }) { (error) -> (Void) in
-            
+            SVProgressHUD.dismiss()
         }
     }
     
@@ -94,7 +98,10 @@ class ContactDetailViewModal: ContactDetailViewModalProtocol {
         let appendedParameters: [String: Bool] = ["favorite": !(self.detailModal?.favoriteStatus ?? false)]
         let urlString = String(format: "http://gojek-contacts-app.herokuapp.com/contacts/%@.json", String(contactId))
         let urlObject = URLObject(urlString: urlString, dataRequestType: .put, appendedParameters: appendedParameters)
+        SVProgressHUD.setDefaultMaskType(.gradient)
+        SVProgressHUD.show()
         dataFetcher?.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
+            SVProgressHUD.dismiss()
             if let errors = response?.errors, errors.count > 0 {
                 // invalid resonse
             }
@@ -103,7 +110,7 @@ class ContactDetailViewModal: ContactDetailViewModalProtocol {
                 self?.setupWith(modal: response, transmitChanges: true)
             }
         }) { (error) -> (Void) in
-
+            SVProgressHUD.dismiss()
         }
     }
     

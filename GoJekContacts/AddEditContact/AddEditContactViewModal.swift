@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 protocol AddEditContactViewModalProtocol {
     var cellViewModals: [AddEditContactCellViewModalProtocol]? {get set}
@@ -175,7 +176,10 @@ class AddEditContactViewModal: AddEditContactViewModalProtocol {
     private func putDataToServer(contactId: Int, appendedParameters: [String: String]) {
         let urlString = String(format: "http://gojek-contacts-app.herokuapp.com/contacts/%@.json", String(contactId))
         let urlObject = URLObject(urlString: urlString, dataRequestType: .put, appendedParameters: appendedParameters)
+        SVProgressHUD.setDefaultMaskType(.gradient)
+        SVProgressHUD.show()
         dataFetcher?.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
+            SVProgressHUD.dismiss()
             if let reponse = response {
                 self?.validationCallBlock?(true, reponse, nil)
             }
@@ -183,13 +187,17 @@ class AddEditContactViewModal: AddEditContactViewModalProtocol {
                 self?.validationCallBlock?(false, nil, GenericStringConstants.networkProblem)
             }
         }) {[weak self] (error) -> (Void) in
+            SVProgressHUD.dismiss()
             self?.validationCallBlock?(false, nil, GenericStringConstants.networkProblem)
         }
     }
     
     private func postDataToServer(appendedParameters: [String: String]) {
         let urlObject = URLObject(urlString: "http://gojek-contacts-app.herokuapp.com/contacts.json", dataRequestType: .post, appendedParameters: appendedParameters)
+        SVProgressHUD.setDefaultMaskType(.gradient)
+        SVProgressHUD.show()
         dataFetcher?.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
+            SVProgressHUD.dismiss()
             if let reponse = response {
                 self?.validationCallBlock?(true, reponse, nil)
             }
@@ -197,6 +205,7 @@ class AddEditContactViewModal: AddEditContactViewModalProtocol {
                 self?.validationCallBlock?(false, nil, GenericStringConstants.networkProblem)
             }
         }) {[weak self] (error) -> (Void) in
+            SVProgressHUD.dismiss()
             self?.validationCallBlock?(false, nil, GenericStringConstants.networkProblem)
         }
     }

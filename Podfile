@@ -8,6 +8,7 @@ target 'GoJekContacts' do
   # Pods for GoJekContacts
   pod 'Alamofire'
   pod 'AlamofireImage'
+  pod 'SVProgressHUD'
 
   target 'GoJekContactsTests' do
     inherit! :search_paths

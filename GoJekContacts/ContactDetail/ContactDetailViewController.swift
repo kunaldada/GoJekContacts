@@ -31,6 +31,7 @@
             super.viewDidLoad()
             self.detailTableView.register(UINib(nibName: CellReuseIdentifierConstants.contactDetailInfoTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.contactDetailInfoTableViewCell)
             self.detailTableView.register(UINib(nibName: CellReuseIdentifierConstants.contactDetailProfileTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.contactDetailProfileTableViewCell)
+            self.initViewModal()
             // Do any additional setup after loading the view.
         }
         
@@ -38,14 +39,12 @@
             guard let detailModal = detailModal else {return nil}
             super.init(nibName: "ContactDetailViewController", bundle: nil)
             self.contactsDetailModal = detailModal
-            self.initViewModal()
             self.customizeNavigationBar()
         }
         
         private func initViewModal() {
             self.viewModal = ContactDetailViewModal()
             self.viewModal?.dataFetcher = DataFetcher.shared
-            self.viewModal?.setupWith(modal: self.contactsDetailModal)
             self.viewModal?.dataFetched = {[weak self] in
                 self?.detailTableView.reloadData()
             }
@@ -58,6 +57,7 @@
             self.viewModal?.userSelectedAction = {[weak self] (actionType: ContactActionType) in
                 self?.userSelectedAction(actionType: actionType)
             }
+            self.viewModal?.setupWith(modal: self.contactsDetailModal)
         }
         
         private func customizeNavigationBar() {

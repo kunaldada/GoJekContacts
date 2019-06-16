@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 protocol ContactListViewModalProtocol {
-//    associatedtype CellViewModalProtocol: ContactListCellViewModalProtocol
+    //    associatedtype CellViewModalProtocol: ContactListCellViewModalProtocol
     var cellViewModals: [[ContactListCellViewModalProtocol]]? {get set}
     var dataFetched: ((_ reloadType: ReloadType) -> (Void))? {get set}
     func getContactsList()
@@ -39,12 +39,18 @@ class ContactListViewModal: ContactListViewModalProtocol {
     var dataFetched: ((_ reloadType: ReloadType) -> (Void))?
     
     internal func getContactsList() {
+        SVProgressHUD.setDefaultMaskType(.gradient)
+        SVProgressHUD.show()
         let dataFetcher = DataFetcher.shared
         let urlObject = URLObject(urlString: "http://gojek-contacts-app.herokuapp.com/contacts.json", dataRequestType: .get, appendedParameters: nil)
+        
         dataFetcher.fetchData(dataRequestor: urlObject, success: {[weak self] (response: [ShortContactModal]?) -> (Void) in
+            SVProgressHUD.dismiss()
             self?.shortContacts = response
             self?.prepareCellViewModals()
-        }, failure: nil)
+            }, failure: { (_) -> (Void) in
+                SVProgressHUD.dismiss()
+        })
     }
     
     func prepareCellViewModals() {
