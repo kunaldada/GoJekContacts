@@ -16,19 +16,27 @@ final class APIConnection {
                                                      serverTrustPolicyManager: nil)
 
 
+    private lazy var imageCache: AutoPurgingImageCache = {
+        let imageCache = AutoPurgingImageCache(
+            memoryCapacity: 100_000_000,
+            preferredMemoryUsageAfterPurge: 60_000_000
+        )
+        return imageCache
+    }()
+    
     func apiURLSessionConfiguration() -> URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
-//        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
-//        configuration.requestCachePolicy = .useProtocolCachePolicy
-//        configuration.allowsCellularAccess = true
+        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        configuration.requestCachePolicy = .useProtocolCachePolicy
+        configuration.allowsCellularAccess = true
         configuration.timeoutIntervalForRequest = 60
-//        configuration.urlCache = self.apiURLCache()
+        configuration.urlCache = self.apiURLCache()
         return configuration
     }
 
     func apiURLCache() -> URLCache {
         return URLCache(
-            memoryCapacity: 0, // 0 MB
+            memoryCapacity: 500, // 0 MB
             diskCapacity: 0, // 0 MB
             diskPath: "com.gojek.apiUrlCache"
         )
@@ -51,15 +59,21 @@ final class APIConnection {
         
     }
     
-    func makeImageConnection(dataRequestor: DataRequestorProtocol, completion:@escaping (_ data: UIImage?,_ error: Error?,_ statusCode: Int?)->(Void)) {
+    func makeImageConnection(dataRequestor: DataRequestorProtocol, completion:@escaping (_ data: UIImage?, _ requestUrlStr: String?, _ error: Error?,_ statusCode: Int?)->(Void)) {
         
         guard let urlRequest = self.getURLRequest(dataRequestor: dataRequestor)
             else {return}
-        
-        self.sessionManager.request(urlRequest).responseImage { (dataResponse) in
-            completion(dataResponse.result.value as? UIImage, dataResponse.result.error, dataResponse.response?.statusCode)
+        if let existingImage = self.imageCache.image(for: urlRequest) {
+            completion(existingImage, urlRequest.url?.absoluteString, nil, 200)
         }
-
+        else {
+            self.sessionManager.request(urlRequest).responseImage { (dataResponse) in
+                if let image = dataResponse.result.value {
+                    self.imageCache.add(image , for: urlRequest)
+                }
+                completion(dataResponse.result.value, dataResponse.request?.url?.absoluteString, dataResponse.result.error,  dataResponse.response?.statusCode)
+            }
+        }
     }
     
     internal func getURLRequest(dataRequestor: DataRequestorProtocol) -> URLRequest? {

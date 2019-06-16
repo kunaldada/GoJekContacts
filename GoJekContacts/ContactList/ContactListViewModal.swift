@@ -116,7 +116,8 @@ class ContactListViewModal: ContactListViewModalProtocol {
                 self.dataFetched?(.reloadIndex(indexPath: existingIndexPath))
             }
             else {
-                // might need reorder
+                //TODO: update logic
+                // might need reorder. moving by brute force for now
                 if let foundIndex = shortContacts?.firstIndex(where: { (findContact) -> Bool in
                     return findContact.contactIdentifier == existingContact.contactIdentifier
                 }) {
@@ -126,7 +127,8 @@ class ContactListViewModal: ContactListViewModalProtocol {
             }
         }
         else {
-            // new contact case
+            //TODO: update logic
+            // new contact case. moving by brute force for now
             shortContacts?.append(newContact)
             self.prepareCellViewModals()
         }

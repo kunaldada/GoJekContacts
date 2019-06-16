@@ -13,6 +13,7 @@ class ContactListTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var favoriteImageView: UIImageView!
+    private var cellViewModal: ContactListCellViewModalProtocol?
     override func awakeFromNib() {
         super.awakeFromNib()
         self.favoriteImageView.image = UIImage(named: ImageStringConstants.homeFavImageName)
@@ -27,6 +28,8 @@ class ContactListTableViewCell: UITableViewCell {
     }
     
     func bindData(cellViewModal: ContactListCellViewModalProtocol?) {
+        self.cellViewModal = cellViewModal
+        
         self.profileImageView.image = UIImage(named:ImageStringConstants.placeHolderImageName)
         
         guard let shortContact = cellViewModal?.shortContact else {return}
@@ -38,8 +41,13 @@ class ContactListTableViewCell: UITableViewCell {
             profilePicUrlStr.isValidUrl() else {return}
 
         let imageUrlObject = URLObject(urlString: profilePicUrlStr, dataRequestType: .get, appendedParameters: nil)
-        DataFetcher.shared.fetchImage(dataRequestor: imageUrlObject, success: { (image) -> (Void) in
-            self.profileImageView.image = image
+        DataFetcher.shared.fetchImage(dataRequestor: imageUrlObject, success: { (image, requestUrlString) -> (Void) in
+            if requestUrlString == self.cellViewModal?.shortContact?.profilePicUrlString {
+                self.profileImageView.image = image
+            }
+            else {
+                //do nothing
+            }
         }, failure: nil)
     }
     

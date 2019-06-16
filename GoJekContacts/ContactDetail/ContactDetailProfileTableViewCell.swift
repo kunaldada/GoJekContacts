@@ -62,7 +62,7 @@ class ContactDetailProfileTableViewCell: UITableViewCell {
             profilePicUrlStr.isValidUrl() else {return}
         
         let imageUrlObject = URLObject(urlString: profilePicUrlStr, dataRequestType: .get, appendedParameters: nil)
-        DataFetcher.shared.fetchImage(dataRequestor: imageUrlObject, success: { (image) -> (Void) in
+        DataFetcher.shared.fetchImage(dataRequestor: imageUrlObject, success: { (image, _) -> (Void) in
             self.profileImageView.image = image
         }, failure: nil)
         

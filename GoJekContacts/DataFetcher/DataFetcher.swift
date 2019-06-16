@@ -32,7 +32,7 @@ protocol DataRequestorProtocol {
 
 protocol DataFetcherProtocol {
     func fetchData<T: Codable>(dataRequestor: DataRequestorProtocol, success: ((_ response: T?) -> (Void))?, failure: ((_ error: Error?) -> (Void))?)
-    func fetchImage(dataRequestor: DataRequestorProtocol, success: ((_ response: UIImage?) -> (Void))?, failure: ((_ error: Error?) -> (Void))?)
+    func fetchImage(dataRequestor: DataRequestorProtocol, success: ((_ response: UIImage?, _ requestUrlStr: String?) -> (Void))?, failure: ((_ error: Error?) -> (Void))?)
 }
 
 final class DataFetcher: DataFetcherProtocol {
@@ -67,10 +67,11 @@ final class DataFetcher: DataFetcherProtocol {
         
     }
     
-    internal func fetchImage(dataRequestor: DataRequestorProtocol, success: ((_ response: UIImage?) -> (Void))?, failure: ((_ error: Error?) -> (Void))?) {
-        apiConnection.makeImageConnection(dataRequestor: dataRequestor) { (image, error, statusCode) -> (Void) in
+    internal func fetchImage(dataRequestor: DataRequestorProtocol, success: ((_ response: UIImage?, _ requestUrlStr: String?) -> (Void))?, failure: ((_ error: Error?) -> (Void))?) {
+        
+        apiConnection.makeImageConnection(dataRequestor: dataRequestor) { (image, requestUrlString, error, statusCode) -> (Void) in
             if let image = image {
-                success?(image)
+                success?(image, requestUrlString)
             }
             else if let error = error {
                 failure?(error)
