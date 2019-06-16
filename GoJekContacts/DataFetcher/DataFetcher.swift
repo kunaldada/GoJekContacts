@@ -27,7 +27,7 @@ protocol DataRequestorProtocol {
     var urlString: String? {get set}
 //    var classToMap: Codable? {get set}
     var dataRequestType: DataRequestType {get set}
-    var appendedParameters: [String: String]? {get set}
+    var appendedParameters: [String: Any]? {get set}
 }
 
 protocol DataFetcherProtocol {

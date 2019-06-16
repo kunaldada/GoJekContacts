@@ -30,11 +30,11 @@ class ContactListTableViewCell: UITableViewCell {
         self.profileImageView.image = UIImage(named:ImageStringConstants.placeHolderImageName)
         
         guard let shortContact = cellViewModal?.shortContact else {return}
-        self.titleLabel.text = shortContact.getFullName()
+        self.titleLabel.text = shortContact.fullName
 
-        favoriteImageView.isHidden = !shortContact.favorite
+        favoriteImageView.isHidden = !(shortContact.favoriteStatus ?? true)
         
-        guard let profilePicUrlStr: String = shortContact.profilePic,
+        guard let profilePicUrlStr: String = shortContact.profilePicUrlString,
             profilePicUrlStr.isValidUrl() else {return}
 
         let imageUrlObject = URLObject(urlString: profilePicUrlStr, dataRequestType: .get, appendedParameters: nil)

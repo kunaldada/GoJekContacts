@@ -32,14 +32,25 @@ class ContactListViewController: UIViewController {
     }
     
     private func initViewModal() {
-        self.viewModal?.dataFetched = {
-            self.contactListTableView.reloadData()
+        self.viewModal?.dataFetched = {(reloadType: ReloadType) in
+            switch reloadType {
+            case .reloadAll:
+                self.contactListTableView.reloadData()
+            case .reloadIndex(let indexPath):
+                guard let indexPath = indexPath else {return}
+                self.contactListTableView.reloadRows(at: [indexPath], with: .automatic)
+            default:
+                break
+            }   
         }
         self.viewModal?.getContactsList()
     }
     
     @objc private func addNewContact() {
         let addNewContactViewController = AddEditContactViewController(addEditModal: nil)
+        addNewContactViewController.contactModalUpdatedBlock = {[weak self](updatedContact) in
+            self?.viewModal?.updateContact(existingIndexPath: nil, newContact: updatedContact)
+        }
         let navigationController = UINavigationController(rootViewController: addNewContactViewController)
         self.present(navigationController, animated: true, completion: nil)
     }
@@ -77,6 +88,9 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         guard let detailViewModal = cellViewModalsAllList[indexPath.section][indexPath.row].shortContact else {return}
         
         if let detailViewController = ContactDetailViewController(detailModal: detailViewModal) {
+            detailViewController.contactModalUpdatedBlock = {[weak self](updatedContactsDetailModal: ContactsDetailModalProtocol?) in
+                self?.viewModal?.updateContact(existingIndexPath: indexPath, newContact: updatedContactsDetailModal)
+            }
             self.navigationController?.pushViewController(detailViewController, animated: true)
         }
     }

@@ -11,37 +11,39 @@ import UIKit
 protocol ContactListViewModalProtocol {
 //    associatedtype CellViewModalProtocol: ContactListCellViewModalProtocol
     var cellViewModals: [[ContactListCellViewModalProtocol]]? {get set}
-    var dataFetched: (() -> (Void))? {get set}
+    var dataFetched: ((_ reloadType: ReloadType) -> (Void))? {get set}
     func getContactsList()
     var existingTitles: [String] {get set}
     var indexTitles: [String] {get set}
+    func updateContact(existingIndexPath: IndexPath?, newContact:ContactsDetailModalProtocol?)
+}
+
+enum ReloadType {
+    case reloadAll
+    case reloadIndex(indexPath: IndexPath?)
+    case insertIndex(indexPath: IndexPath?)
+    case batch(insertIndexPaths: [IndexPath]?, deleteIndexPaths: [IndexPath]?, reloadIndexPath: [IndexPath]?)
 }
 
 class ContactListViewModal: ContactListViewModalProtocol {
     
-    var cellViewModals: [[ContactListCellViewModalProtocol]]? {
-        didSet {
-            self.dataFetched?()
-        }
-    }
+    var cellViewModals: [[ContactListCellViewModalProtocol]]?
     
     var existingTitles: [String] = []
-    var groupedShortContacts: [[ShortContactModal]] = []
-    var shortContacts: [ShortContactModal]? {
-        didSet {
-            self.prepareCellViewModals()
-        }
-    }
+    var groupedShortContacts: [[ContactsDetailModalProtocol]] = []
+    var shortContacts: [ContactsDetailModalProtocol]?
+    
     internal var indexTitles: [String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#"]
     
     
-    var dataFetched: (() -> (Void))?
+    var dataFetched: ((_ reloadType: ReloadType) -> (Void))?
     
     internal func getContactsList() {
         let dataFetcher = DataFetcher.shared
         let urlObject = URLObject(urlString: "http://gojek-contacts-app.herokuapp.com/contacts.json", dataRequestType: .get, appendedParameters: nil)
-        dataFetcher.fetchData(dataRequestor: urlObject, success: { (response: [ShortContactModal]?) -> (Void) in
-            self.shortContacts = response
+        dataFetcher.fetchData(dataRequestor: urlObject, success: {[weak self] (response: [ShortContactModal]?) -> (Void) in
+            self?.shortContacts = response
+            self?.prepareCellViewModals()
         }, failure: nil)
     }
     
@@ -51,8 +53,8 @@ class ContactListViewModal: ContactListViewModalProtocol {
             return
         }
         var overAllCellViewModalsList: [[ContactListCellViewModal]] = []
-        var localGroupShortContacts: [[ShortContactModal]] = []
-        for index in 0..<indexTitles.count {
+        var localGroupShortContacts: [[ContactsDetailModalProtocol]] = []
+        for _ in 0..<indexTitles.count {
             localGroupShortContacts.append([])
         }
         
@@ -92,5 +94,35 @@ class ContactListViewModal: ContactListViewModalProtocol {
             }
         }
         self.cellViewModals = overAllCellViewModalsList
+        self.dataFetched?(.reloadAll)
+    }
+    
+    func updateContact(existingIndexPath: IndexPath?, newContact:ContactsDetailModalProtocol?) {
+        guard let newContact = newContact else{return}
+        
+        if let existingIndexPath = existingIndexPath
+        {
+            let existingContact: ContactsDetailModalProtocol = groupedShortContacts[existingIndexPath.section][existingIndexPath.row]
+            // existing contact case
+            if existingContact.fullName == newContact.fullName {
+                // no need to reorder.just reload
+                self.cellViewModals?[existingIndexPath.section][existingIndexPath.row].shortContact = newContact
+                self.dataFetched?(.reloadIndex(indexPath: existingIndexPath))
+            }
+            else {
+                // might need reorder
+                if let foundIndex = shortContacts?.firstIndex(where: { (findContact) -> Bool in
+                    return findContact.contactIdentifier == existingContact.contactIdentifier
+                }) {
+                    shortContacts?[foundIndex] = newContact
+                    self.prepareCellViewModals()
+                }
+            }
+        }
+        else {
+            // new contact case
+            shortContacts?.append(newContact)
+            self.prepareCellViewModals()
+        }
     }
 }

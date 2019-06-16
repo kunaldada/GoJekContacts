@@ -9,9 +9,9 @@
 import UIKit
 
 protocol ContactListCellViewModalProtocol {
-    var shortContact: ShortContactModal? {get set}
+    var shortContact: ContactsDetailModalProtocol? {get set}
 }
 
 class ContactListCellViewModal: ContactListCellViewModalProtocol {
-    var shortContact: ShortContactModal?
+    var shortContact: ContactsDetailModalProtocol?
 }

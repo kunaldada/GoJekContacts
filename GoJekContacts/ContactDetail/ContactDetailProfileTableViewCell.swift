@@ -76,18 +76,18 @@ class ContactDetailProfileTableViewCell: UITableViewCell {
     }
     
     @IBAction func messageButtonClicked(_ sender: Any) {
-        
+        self.cellViewModal?.messageSelected()
     }
     
     @IBAction func callButtonClicked(_ sender: Any) {
-        
+        self.cellViewModal?.callSelected()
     }
     
     @IBAction func emailButtonClicked(_ sender: Any) {
-        
+        self.cellViewModal?.emailSelected()
     }
     
     @IBAction func favoriteButtonClicked(_ sender: Any) {
-        
+        self.cellViewModal?.favoriteSelected()
     }
 }

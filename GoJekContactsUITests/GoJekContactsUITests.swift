@@ -28,13 +28,13 @@ class GoJekContactsUITests: XCTestCase {
 
     func testExample() {
         
-//        let tableIndexElement = XCUIApplication().tables.otherElements["table index"]
-//        tableIndexElement.tap()
+        let tableIndexElement = XCUIApplication().tables.otherElements["table index"]
+        tableIndexElement.tap()
 //        tableIndexElement.tap()
         
 //        let app = XCUIApplication()
 //        let tablesQuery = app.tables
-//        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["aaaaaaa1 babba"]/*[[".cells.staticTexts[\"aaaaaaa1 babba\"]",".staticTexts[\"aaaaaaa1 babba\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+//        tablesQuery.staticTexts["aaaaaaa1 babba"].swipeUp()
 //        app.otherElements.containing(.navigationBar, identifier:"Contact").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .table).element.swipeUp()
 //
 //        let contactNavigationBar = app.navigationBars["Contact"]
@@ -46,6 +46,15 @@ class GoJekContactsUITests: XCTestCase {
 //        tablesQuery/*@START_MENU_TOKEN@*/.buttons["favourite button"]/*[[".cells.buttons[\"favourite button\"]",".buttons[\"favourite button\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
                     // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        
+        
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        tablesQuery.staticTexts["aaaaaaaaaaaa aaaaaaaaaaa"].tap()
+        app.navigationBars["Contact"].buttons["Edit"].tap()
+        app.tables.cells.containing(.staticText, identifier:"First Name").children(matching: .textField).element.tap()
+        
     }
 
 }

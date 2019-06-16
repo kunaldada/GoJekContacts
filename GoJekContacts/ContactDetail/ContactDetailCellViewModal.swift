@@ -17,12 +17,37 @@ extension ContactDetailCellViewModalProtocol {
     func setup(key: String?, value: String?) {}
 }
 
+enum ContactActionType {
+    case message
+    case call
+    case email
+    case favorite
+}
 
 class ContactDetailProfileCellViewModal: ContactDetailCellViewModalProtocol {
     var detailModal: ContactsDetailModalProtocol?
     func setup(modal: ContactsDetailModalProtocol?) {
         self.detailModal = modal
     }
+    
+    var userSelectedAction: ((ContactActionType) -> (Void))?
+    
+    func messageSelected() {
+        self.userSelectedAction?(.message)
+    }
+    
+    func callSelected() {
+        self.userSelectedAction?(.call)
+    }
+    
+    func emailSelected() {
+        self.userSelectedAction?(.email)
+    }
+    
+    func favoriteSelected() {
+        self.userSelectedAction?(.favorite)
+    }
+    
 }
 
 class ContactDetailInfoCellViewModal: ContactDetailCellViewModalProtocol {

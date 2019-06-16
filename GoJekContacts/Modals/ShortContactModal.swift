@@ -14,7 +14,7 @@ struct ShortContactModal: Codable {
     let firstName: String?
     let lastName: String?
     let profilePic: String?
-    let favorite: Bool = false
+    let favorite: Bool?
     let url: String?
     let errors: [String]?
     

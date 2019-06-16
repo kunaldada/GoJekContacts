@@ -7,7 +7,7 @@
     //
     
     import UIKit
-    
+    import MessageUI
     protocol ContactsDetailModalProtocol: ContactsAddEditDetailModalProtocol {
         var fullName: String? {get}
         var contactIdentifier: Int? {get}
@@ -24,6 +24,7 @@
         
         var viewModal: ContactDetailViewModalProtocol?
         var contactsDetailModal: ContactsDetailModalProtocol?
+        var contactModalUpdatedBlock: ((_ updatedContactsDetailModal: ContactsDetailModalProtocol?) -> (Void))?
         private var updatedContactsDetailModal: ContactsDetailModalProtocol?
         @IBOutlet weak var detailTableView: UITableView!
         override func viewDidLoad() {
@@ -43,12 +44,19 @@
         
         private func initViewModal() {
             self.viewModal = ContactDetailViewModal()
+            self.viewModal?.dataFetcher = DataFetcher.shared
             self.viewModal?.setupWith(modal: self.contactsDetailModal)
             self.viewModal?.dataFetched = {[weak self] in
                 self?.detailTableView.reloadData()
             }
-            self.viewModal?.updateWithDetailedContact = {[weak self](updatedContactsDetailModal) in
+            self.viewModal?.updateWithDetailedContact = {[weak self](updatedContactsDetailModal, transmitChanges) in
                 self?.updatedContactsDetailModal = updatedContactsDetailModal
+                if transmitChanges {
+                    self?.contactModalUpdatedBlock?(updatedContactsDetailModal)
+                }
+            }
+            self.viewModal?.userSelectedAction = {[weak self] (actionType: ContactActionType) in
+                self?.userSelectedAction(actionType: actionType)
             }
         }
         
@@ -64,6 +72,11 @@
                 return
             }
             let editContactViewController = AddEditContactViewController(addEditModal: updatedContactsDetailModal)
+            editContactViewController.contactModalUpdatedBlock = {[weak self](updatedContact) in
+                self?.contactsDetailModal = updatedContact
+                self?.viewModal?.setupWith(modal: self?.contactsDetailModal)
+                self?.contactModalUpdatedBlock?(updatedContact)
+            }
             let navigationController = UINavigationController(rootViewController: editContactViewController)
             self.present(navigationController, animated: true, completion: nil)
         }
@@ -81,6 +94,47 @@
          // Pass the selected object to the new view controller.
          }
          */
+        
+        private func userSelectedAction(actionType: ContactActionType) {
+            switch actionType {
+            case .call:
+                guard let phoneNumber = self.updatedContactsDetailModal?.mobileNumber,
+                    let isValidPhone = self.updatedContactsDetailModal?.hasValidMobile,
+                        isValidPhone,
+                            let numberUrl = URL(string: "tel://" + phoneNumber) else { return }
+                UIApplication.shared.open(numberUrl)
+            
+            case .message:
+                guard let phoneNumber = self.updatedContactsDetailModal?.mobileNumber,
+                    let isValidPhone = self.updatedContactsDetailModal?.hasValidMobile,
+                    isValidPhone else {return}
+
+                if (MFMessageComposeViewController.canSendText()) {
+                    let controller = MFMessageComposeViewController()
+                    controller.body = ""
+                    controller.recipients = [phoneNumber]
+                    controller.messageComposeDelegate = self
+                    self.present(controller, animated: true, completion: nil)
+                }
+                
+            case .email:
+                guard let emailAddress = self.updatedContactsDetailModal?.emailAddress,
+                    let isValidEmail = self.updatedContactsDetailModal?.hasValidEmail,
+                    isValidEmail else {return}
+
+                if MFMailComposeViewController.canSendMail() {
+                    let composer = MFMailComposeViewController()
+                    composer.mailComposeDelegate = self
+                    composer.setToRecipients([emailAddress])
+                    composer.setSubject("")
+                    composer.setMessageBody("", isHTML: false)
+                    self.present(composer, animated: true, completion: nil)
+                }
+                
+            default:
+                break
+            }
+        }
         
     }
     
@@ -125,4 +179,15 @@
         
     }
     
+    extension ContactDetailViewController: MFMessageComposeViewControllerDelegate {
+        func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
+    extension ContactDetailViewController: MFMailComposeViewControllerDelegate {
+        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+

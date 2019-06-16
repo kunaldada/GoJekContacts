@@ -13,7 +13,7 @@ struct ContactModal: Codable {
     let firstName: String?
     let lastName: String?
     let profilePic: String?
-    let favorite: Bool = false
+    let favorite: Bool?
     let email: String?
     let phoneNumber: String?
     let errors: [String]?

@@ -13,7 +13,8 @@ class AddEditContactViewController: UIViewController {
     @IBOutlet weak var addEditContactDetailTableView: UITableView!
     var addEditModal: ContactsAddEditDetailModalProtocol?
     private var viewModal: AddEditContactViewModalProtocol?
-
+    var contactModalUpdatedBlock: ((_ updatedContactsDetailModal: ContactsDetailModalProtocol?) -> (Void))?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addEditContactDetailTableView.register(UINib(nibName: CellReuseIdentifierConstants.editContactOtherInfoTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.editContactOtherInfoTableViewCell)
@@ -44,6 +45,7 @@ class AddEditContactViewController: UIViewController {
                 self.showErrorMessage(errorMessage: serverErrors[0])
             }
             else {
+                self.contactModalUpdatedBlock?(updatedContact as? ContactsDetailModalProtocol)
                 self.dismiss(animated: true, completion: nil)
             }
         }

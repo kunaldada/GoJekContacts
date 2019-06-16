@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4q-6I-Rw3">
-                        <rect key="frame" x="72" y="24" width="156" height="16"/>
+                        <rect key="frame" x="72" y="24" width="181" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="hlF-hg-vwg"/>
                         </constraints>
@@ -36,10 +36,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d9p-Qo-0RN">
-                        <rect key="frame" x="244" y="10" width="44" height="44"/>
+                        <rect key="frame" x="269" y="23" width="19" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="44" id="kKk-Eb-C9C"/>
-                            <constraint firstAttribute="height" constant="44" id="maa-GK-XUS"/>
+                            <constraint firstAttribute="width" constant="19" id="kKk-Eb-C9C"/>
+                            <constraint firstAttribute="height" constant="18" id="maa-GK-XUS"/>
                         </constraints>
                     </imageView>
                 </subviews>

@@ -10,36 +10,49 @@ import UIKit
 
 protocol ContactDetailViewModalProtocol {
     func setupWith(modal: ContactsDetailModalProtocol?)
+    var dataFetcher: DataFetcherProtocol? {get set}
     var cellViewModals: [ContactDetailCellViewModalProtocol]? {get set}
     var dataFetched: (() -> (Void))? {get set}
-    var updateWithDetailedContact: ((_ detailModal: ContactsDetailModalProtocol?) -> (Void))? {get set}
+    var updateWithDetailedContact: ((_ detailModal: ContactsDetailModalProtocol?,_ transmitChanges: Bool) -> (Void))? {get set}
+    var userSelectedAction: ((_ actionType: ContactActionType) -> (Void))? {get set}
 }
 
 class ContactDetailViewModal: ContactDetailViewModalProtocol {
-    
+
     var detailModal: ContactsDetailModalProtocol?
+    var dataFetcher: DataFetcherProtocol?
     var cellViewModals: [ContactDetailCellViewModalProtocol]? {
         didSet {
             self.dataFetched?()
         }
     }
     var dataFetched: (() -> (Void))?
-    var updateWithDetailedContact: ((_ detailModal: ContactsDetailModalProtocol?) -> (Void))?
+    var updateWithDetailedContact: ((_ detailModal: ContactsDetailModalProtocol?,_ transmitChanges: Bool) -> (Void))?
+    var userSelectedAction: ((_ actionType: ContactActionType) -> (Void))?
     
     func setupWith(modal: ContactsDetailModalProtocol?) {
+        self.setupWith(modal: modal, transmitChanges: false)
+    }
+    
+    private func setupWith(modal: ContactsDetailModalProtocol?, transmitChanges: Bool) {
         self.detailModal = modal
         self.initCellViewModals()
         if self.detailModal?.hasCompleteDisplayInfo == false {
             self.fetchCompleteContactDetails()
         }
         else {
-            self.updateWithDetailedContact?(self.detailModal)
+            self.updateWithDetailedContact?(self.detailModal, transmitChanges)
         }
     }
     
     private func initCellViewModals() {
         var updatedCellViewModals: [ContactDetailCellViewModalProtocol] = []
         let profileCellViewModal: ContactDetailProfileCellViewModal = ContactDetailProfileCellViewModal()
+        
+        profileCellViewModal.userSelectedAction =  {[weak self](selectedAction: ContactActionType) in
+            self?.userSelectedActionFromProfile(actionType: selectedAction)
+        }
+        
         profileCellViewModal.setup(modal: self.detailModal)
         updatedCellViewModals.append(profileCellViewModal)
         if self.detailModal?.hasValidMobile == true {
@@ -59,12 +72,38 @@ class ContactDetailViewModal: ContactDetailViewModalProtocol {
         guard let contactId = self.detailModal?.contactIdentifier else {return}
         
         let urlString = String(format: "https://gojek-contacts-app.herokuapp.com/contacts/%@.json", String(contactId))
-        let dataFetcher = DataFetcher.shared
         let urlObject = URLObject(urlString: urlString, dataRequestType: .get, appendedParameters: nil)
-        dataFetcher.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
-            self?.setupWith(modal: response)
+        dataFetcher?.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
+            self?.setupWith(modal: response, transmitChanges: false)
         }) { (error) -> (Void) in
             
+        }
+    }
+    
+    private func userSelectedActionFromProfile(actionType: ContactActionType) {
+        switch actionType {
+        case .favorite:
+            self.makeFavoriteCall()
+        default:
+            self.userSelectedAction?(actionType)
+        }
+    }
+    
+    private func makeFavoriteCall() {
+        guard let contactId = self.detailModal?.contactIdentifier else {return}
+        let appendedParameters: [String: Bool] = ["favorite": !(self.detailModal?.favoriteStatus ?? false)]
+        let urlString = String(format: "http://gojek-contacts-app.herokuapp.com/contacts/%@.json", String(contactId))
+        let urlObject = URLObject(urlString: urlString, dataRequestType: .put, appendedParameters: appendedParameters)
+        dataFetcher?.fetchData(dataRequestor: urlObject, success: {[weak self] (response: ContactModal?) -> (Void) in
+            if let errors = response?.errors, errors.count > 0 {
+                // invalid resonse
+            }
+            else {
+                //valid response
+                self?.setupWith(modal: response, transmitChanges: true)
+            }
+        }) { (error) -> (Void) in
+
         }
     }
     
