@@ -32,14 +32,20 @@
             self.detailTableView.register(UINib(nibName: CellReuseIdentifierConstants.contactDetailInfoTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.contactDetailInfoTableViewCell)
             self.detailTableView.register(UINib(nibName: CellReuseIdentifierConstants.contactDetailProfileTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.contactDetailProfileTableViewCell)
             self.initViewModal()
+            self.addNavigationBarButtons()
             // Do any additional setup after loading the view.
         }
+        
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            self.customizeNavigationBar()
+        }
+        
         
         init?(detailModal: ContactsDetailModalProtocol?) {
             guard let detailModal = detailModal else {return nil}
             super.init(nibName: "ContactDetailViewController", bundle: nil)
             self.contactsDetailModal = detailModal
-            self.customizeNavigationBar()
         }
         
         private func initViewModal() {
@@ -60,11 +66,16 @@
             self.viewModal?.setupWith(modal: self.contactsDetailModal)
         }
         
-        private func customizeNavigationBar() {
-//            self.navigationController?.navigationBar.isTranslucent = true
-//            self.navigationController?.view.backgroundColor = .clear
+        private func addNavigationBarButtons() {
             let rightItem = UIBarButtonItem(title: GenericStringConstants.contactDetailRightNavigationButtonTitle, style: .plain, target: self, action: #selector(editContactPressed))
             self.navigationItem.rightBarButtonItem = rightItem
+        }
+        
+        private func customizeNavigationBar() {
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            self.navigationController?.navigationBar.isTranslucent = true
+            self.navigationController?.view.backgroundColor = UIColor.white
         }
 
         @objc private func editContactPressed() {

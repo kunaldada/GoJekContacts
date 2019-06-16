@@ -20,17 +20,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dra-EQ-5Cq">
-                        <rect key="frame" x="20" y="17.5" width="100" height="21"/>
+                        <rect key="frame" x="20" y="17.5" width="90" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="F1o-Sh-wwh"/>
-                            <constraint firstAttribute="width" constant="100" id="Mtv-ZN-Ah5"/>
+                            <constraint firstAttribute="width" constant="90" id="Mtv-ZN-Ah5"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                         <color key="textColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9El-NN-9wK">
-                        <rect key="frame" x="152" y="19.5" width="148" height="17"/>
+                        <rect key="frame" x="142" y="5" width="158" height="45.5"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -40,7 +40,9 @@
                     <constraint firstItem="9El-NN-9wK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PQk-Xf-K9d"/>
                     <constraint firstItem="9El-NN-9wK" firstAttribute="leading" secondItem="Dra-EQ-5Cq" secondAttribute="trailing" constant="32" id="YZu-c1-O95"/>
                     <constraint firstItem="Dra-EQ-5Cq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="g9K-wY-RRM"/>
+                    <constraint firstAttribute="bottom" secondItem="9El-NN-9wK" secondAttribute="bottom" constant="5" id="tly-4Q-tSj"/>
                     <constraint firstItem="Dra-EQ-5Cq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vQ2-8k-CdD"/>
+                    <constraint firstItem="9El-NN-9wK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="x5o-iC-M3t"/>
                     <constraint firstAttribute="trailing" secondItem="9El-NN-9wK" secondAttribute="trailing" constant="20" id="xgF-CF-4Lk"/>
                 </constraints>
             </tableViewCellContentView>

@@ -16,13 +16,23 @@ class ContactListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.customizeNavigationBar()
+        self.addNavigationBarButtons()
         self.contactListTableView.register(UINib(nibName: CellReuseIdentifierConstants.contactListTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.contactListTableViewCell)
         self.initViewModal()
         // Do any additional setup after loading the view.
     }
     
-    private func customizeNavigationBar() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.customizeNavBar()
+    }
+    
+    private func customizeNavBar() {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.view.backgroundColor = UIColor.white
+    }
+    
+    private func addNavigationBarButtons() {
         self.title = GenericStringConstants.contactListViewNavigationTitle
         let leftItem = UIBarButtonItem(title: GenericStringConstants.contactListLeftNavigationButtonTitle, style: .plain, target: self, action: nil)
         self.navigationItem.leftBarButtonItem = leftItem

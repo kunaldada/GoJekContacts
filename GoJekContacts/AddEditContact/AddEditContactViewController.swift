@@ -15,18 +15,39 @@ class AddEditContactViewController: UIViewController {
     private var viewModal: AddEditContactViewModalProtocol?
     var contactModalUpdatedBlock: ((_ updatedContactsDetailModal: ContactsDetailModalProtocol?) -> (Void))?
     
+    static let profileCellHeight: CGFloat = 190
+    static let otherInfoCellHeight: CGFloat = 56
+    
+    private var desiredOffset: CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addEditContactDetailTableView.register(UINib(nibName: CellReuseIdentifierConstants.editContactOtherInfoTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.editContactOtherInfoTableViewCell)
         self.addEditContactDetailTableView.register(UINib(nibName: CellReuseIdentifierConstants.editContactProfileTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.editContactProfileTableViewCell)
         self.initViewModal()
+        self.addNavigationBarButtons()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willDisplayKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.customizeNavigationBar()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        for cell in self.addEditContactDetailTableView.visibleCells {
+            if let cell = cell as? KeyboardDisplayer {
+                cell.activateKeyboardResponder()
+                break
+            }
+        }
+    }
+    
     init(addEditModal: ContactsAddEditDetailModalProtocol?) {
         super.init(nibName: "AddEditContactViewController", bundle: nil)
         self.addEditModal = addEditModal
-        self.customizeNavigationBar()
     }
     
     private func initViewModal() {
@@ -43,7 +64,9 @@ class AddEditContactViewController: UIViewController {
                 self.showErrorMessage(errorMessage: serverErrors[0])
             }
             else {
-                self.contactModalUpdatedBlock?(updatedContact as? ContactsDetailModalProtocol)
+                if let updatedContact = updatedContact {
+                    self.contactModalUpdatedBlock?(updatedContact as? ContactsDetailModalProtocol)
+                }
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -54,21 +77,35 @@ class AddEditContactViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func customizeNavigationBar() {
-
+    private func addNavigationBarButtons() {
         let leftItem = UIBarButtonItem(title: GenericStringConstants.contactEditLeftNavigationButtonTitle, style: .plain, target: self, action: #selector(cancelPressed))
         self.navigationItem.leftBarButtonItem = leftItem
         
         let rightItem = UIBarButtonItem(title: GenericStringConstants.contactEditRightNavigationButtonTitle, style: .plain, target: self, action: #selector(donePressed))
         self.navigationItem.rightBarButtonItem = rightItem
+        self.navigationItem.rightBarButtonItem = rightItem
+    }
+    
+    private func customizeNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
     }
     
     @objc private func donePressed() {
+        self.dismissAllKeyboards()
         self.viewModal?.validateAllDataAndSync()
     }
 
     @objc private func cancelPressed() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func dismissAllKeyboards() {
+        for cells in self.addEditContactDetailTableView.visibleCells {
+            (cells as? KeyboardDisplayer)?.resignKeyboardResponder()
+        }
     }
     
     private func showErrorMessage(errorMessage: String) {
@@ -77,6 +114,19 @@ class AddEditContactViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    @objc private func willDisplayKeyboard(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            let padding: CGFloat = 150
+            if self.desiredOffset < self.addEditContactDetailTableView.frame.size.height - keyboardHeight - padding {
+                // do nothing
+            }
+            else {
+                let setContentOffset = self.desiredOffset - (self.addEditContactDetailTableView.frame.size.height - keyboardHeight - padding)
+                self.addEditContactDetailTableView.setContentOffset(CGPoint(x: 0, y: setContentOffset), animated: true)
+            }
+        }
+    }
     
     /*
     // MARK: - Navigation
@@ -109,6 +159,7 @@ extension AddEditContactViewController: UITableViewDelegate, UITableViewDataSour
         else if let infoCellViewModal = cellViewModal as? AddEditContactOtherInfoCellViewModal {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseIdentifierConstants.editContactOtherInfoTableViewCell, for: indexPath)
             (cell as? EditContactOtherInfoTableViewCell)?.bindData(cellViewModal: infoCellViewModal)
+            (cell as? EditContactOtherInfoTableViewCell)?.acknowledgementDelegate = self
             cell.selectionStyle = .none
             return cell
         }
@@ -121,12 +172,34 @@ extension AddEditContactViewController: UITableViewDelegate, UITableViewDataSour
         
         let cellViewModal = cellViewModalList[indexPath.row]
         if let _ = cellViewModal as? AddEditContactProfileCellViewModal {
-            return 255
+            return AddEditContactViewController.profileCellHeight
         }
         else if let _ = cellViewModal as? AddEditContactOtherInfoCellViewModal {
-            return 56
+            return AddEditContactViewController.otherInfoCellHeight
         }
         return 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.dismissAllKeyboards()
+    }
+
+    
+}
+
+extension AddEditContactViewController: KeyboardDisplayerAcknowledgment {
+    func textFieldInCellBecameActive(cell: UITableViewCell?) {
+        guard let cell = cell else {return}
+        if let indexPath = self.addEditContactDetailTableView.indexPath(for: cell) {
+            if indexPath.row > 0 {
+                self.desiredOffset = AddEditContactViewController.profileCellHeight + CGFloat(indexPath.row - 1)*AddEditContactViewController.otherInfoCellHeight
+            }
+        }
+    }
+    
+    func textFieldInCellBecameInactive(cell: UITableViewCell?) {
+        self.desiredOffset = 0
+        self.addEditContactDetailTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
     

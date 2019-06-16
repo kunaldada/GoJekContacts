@@ -8,11 +8,27 @@
 
 import UIKit
 
+protocol KeyboardDisplayer {
+    var acknowledgementDelegate: KeyboardDisplayerAcknowledgment? {get set}
+    func resignKeyboardResponder()
+    func activateKeyboardResponder()
+}
+
+protocol KeyboardDisplayerAcknowledgment {
+    func textFieldInCellBecameActive(cell: UITableViewCell?)
+    func textFieldInCellBecameInactive(cell: UITableViewCell?)
+}
+
+
 class EditContactOtherInfoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var infoKeyLabel: UILabel!
     @IBOutlet weak var infoValueTextField: UITextField!
+    
     var cellViewModal: AddEditContactOtherInfoCellViewModal?
+    
+    var acknowledgementDelegate: KeyboardDisplayerAcknowledgment?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.infoValueTextField.delegate = self
@@ -63,8 +79,30 @@ extension EditContactOtherInfoTableViewCell: UITextFieldDelegate {
         self.cellViewModal?.updateValue(updatedValue: textField.text)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.acknowledgementDelegate?.textFieldInCellBecameActive(cell: self)
+
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        self.acknowledgementDelegate?.textFieldInCellBecameInactive(cell: self)
+        return true
+    }
+
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension EditContactOtherInfoTableViewCell: KeyboardDisplayer {
+    
+    func resignKeyboardResponder() {
+        self.infoValueTextField.resignFirstResponder()
+    }
+    
+    func activateKeyboardResponder() {
+        self.infoValueTextField.becomeFirstResponder()
     }
 }
