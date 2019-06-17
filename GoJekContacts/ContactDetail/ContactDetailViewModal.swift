@@ -84,7 +84,7 @@ class ContactDetailViewModal: ContactDetailViewModalProtocol {
         }
     }
     
-    private func userSelectedActionFromProfile(actionType: ContactActionType) {
+    func userSelectedActionFromProfile(actionType: ContactActionType) {
         switch actionType {
         case .favorite:
             self.makeFavoriteCall()

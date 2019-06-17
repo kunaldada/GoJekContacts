@@ -13,6 +13,7 @@
 		9308F2A522B332C9007A3A38 /* ContactDetailViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308F2A422B332C9007A3A38 /* ContactDetailViewModal.swift */; };
 		9308F2A722B33366007A3A38 /* ContactDetailCellViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308F2A622B33366007A3A38 /* ContactDetailCellViewModal.swift */; };
 		9308F2AA22B33ECC007A3A38 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308F2A922B33ECC007A3A38 /* StringConstants.swift */; };
+		9333115D22B7249F00D5B5B6 /* GoJekContactsFavoriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9333115C22B7249F00D5B5B6 /* GoJekContactsFavoriteTests.swift */; };
 		933619FE22B5116B00FBA450 /* ColorConstantFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933619FD22B5116B00FBA450 /* ColorConstantFile.swift */; };
 		93361A0E22B5664400FBA450 /* MockDataFetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93361A0D22B5664400FBA450 /* MockDataFetcherProtocol.swift */; };
 		9338467B22B09C3300B74A90 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9338467A22B09C3300B74A90 /* DataFetcher.swift */; };
@@ -48,6 +49,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9333115F22B7249F00D5B5B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93B70B7F22B0983600CF9C6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93B70B8622B0983600CF9C6B;
+			remoteInfo = GoJekContacts;
+		};
 		93B70B9C22B0983A00CF9C6B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 93B70B7F22B0983600CF9C6B /* Project object */;
@@ -77,6 +85,9 @@
 		9308F2A422B332C9007A3A38 /* ContactDetailViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewModal.swift; sourceTree = "<group>"; };
 		9308F2A622B33366007A3A38 /* ContactDetailCellViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailCellViewModal.swift; sourceTree = "<group>"; };
 		9308F2A922B33ECC007A3A38 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		9333115A22B7249F00D5B5B6 /* GoJekContactsFavoriteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoJekContactsFavoriteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9333115C22B7249F00D5B5B6 /* GoJekContactsFavoriteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoJekContactsFavoriteTests.swift; sourceTree = "<group>"; };
+		9333115E22B7249F00D5B5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		933619FD22B5116B00FBA450 /* ColorConstantFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstantFile.swift; sourceTree = "<group>"; };
 		93361A0D22B5664400FBA450 /* MockDataFetcherProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataFetcherProtocol.swift; sourceTree = "<group>"; };
 		9338467A22B09C3300B74A90 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
@@ -118,6 +129,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9333115722B7249F00D5B5B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B70B8422B0983600CF9C6B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,6 +180,15 @@
 				933619FD22B5116B00FBA450 /* ColorConstantFile.swift */,
 			);
 			path = HelperClasses;
+			sourceTree = "<group>";
+		};
+		9333115B22B7249F00D5B5B6 /* GoJekContactsFavoriteTests */ = {
+			isa = PBXGroup;
+			children = (
+				9333115C22B7249F00D5B5B6 /* GoJekContactsFavoriteTests.swift */,
+				9333115E22B7249F00D5B5B6 /* Info.plist */,
+			);
+			path = GoJekContactsFavoriteTests;
 			sourceTree = "<group>";
 		};
 		93361A0F22B5681500FBA450 /* SupportingMocks */ = {
@@ -239,6 +266,7 @@
 				93B70B8922B0983600CF9C6B /* GoJekContacts */,
 				93B70B9E22B0983A00CF9C6B /* GoJekContactsTests */,
 				93B70BA922B0983A00CF9C6B /* GoJekContactsUITests */,
+				9333115B22B7249F00D5B5B6 /* GoJekContactsFavoriteTests */,
 				93B70B8822B0983600CF9C6B /* Products */,
 				E0138116D3550C79F28C602C /* Pods */,
 				09FC6D8BE3E5A32D045FFE98 /* Frameworks */,
@@ -251,6 +279,7 @@
 				93B70B8722B0983600CF9C6B /* GoJekContacts.app */,
 				93B70B9B22B0983A00CF9C6B /* GoJekContactsTests.xctest */,
 				93B70BA622B0983A00CF9C6B /* GoJekContactsUITests.xctest */,
+				9333115A22B7249F00D5B5B6 /* GoJekContactsFavoriteTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -308,6 +337,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9333115922B7249F00D5B5B6 /* GoJekContactsFavoriteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9333116322B7249F00D5B5B6 /* Build configuration list for PBXNativeTarget "GoJekContactsFavoriteTests" */;
+			buildPhases = (
+				9333115622B7249F00D5B5B6 /* Sources */,
+				9333115722B7249F00D5B5B6 /* Frameworks */,
+				9333115822B7249F00D5B5B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9333116022B7249F00D5B5B6 /* PBXTargetDependency */,
+			);
+			name = GoJekContactsFavoriteTests;
+			productName = GoJekContactsFavoriteTests;
+			productReference = 9333115A22B7249F00D5B5B6 /* GoJekContactsFavoriteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		93B70B8622B0983600CF9C6B /* GoJekContacts */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B70BAF22B0983A00CF9C6B /* Build configuration list for PBXNativeTarget "GoJekContacts" */;
@@ -375,6 +422,10 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = ioshellboy;
 				TargetAttributes = {
+					9333115922B7249F00D5B5B6 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 93B70B8622B0983600CF9C6B;
+					};
 					93B70B8622B0983600CF9C6B = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -404,11 +455,19 @@
 				93B70B8622B0983600CF9C6B /* GoJekContacts */,
 				93B70B9A22B0983A00CF9C6B /* GoJekContactsTests */,
 				93B70BA522B0983A00CF9C6B /* GoJekContactsUITests */,
+				9333115922B7249F00D5B5B6 /* GoJekContactsFavoriteTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9333115822B7249F00D5B5B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B70B8522B0983600CF9C6B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -538,6 +597,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9333115622B7249F00D5B5B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9333115D22B7249F00D5B5B6 /* GoJekContactsFavoriteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B70B8322B0983600CF9C6B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -587,6 +654,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9333116022B7249F00D5B5B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93B70B8622B0983600CF9C6B /* GoJekContacts */;
+			targetProxy = 9333115F22B7249F00D5B5B6 /* PBXContainerItemProxy */;
+		};
 		93B70B9D22B0983A00CF9C6B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 93B70B8622B0983600CF9C6B /* GoJekContacts */;
@@ -619,6 +691,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9333116122B7249F00D5B5B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoJekContactsFavoriteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.til.gaana.GoJekContactsFavoriteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoJekContacts.app/GoJekContacts";
+			};
+			name = Debug;
+		};
+		9333116222B7249F00D5B5B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoJekContactsFavoriteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.til.gaana.GoJekContactsFavoriteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoJekContacts.app/GoJekContacts";
+			};
+			name = Release;
+		};
 		93B70BAD22B0983A00CF9C6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -858,6 +968,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9333116322B7249F00D5B5B6 /* Build configuration list for PBXNativeTarget "GoJekContactsFavoriteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9333116122B7249F00D5B5B6 /* Debug */,
+				9333116222B7249F00D5B5B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		93B70B8222B0983600CF9C6B /* Build configuration list for PBXProject "GoJekContacts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

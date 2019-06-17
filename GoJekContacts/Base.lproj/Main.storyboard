@@ -29,7 +29,7 @@
         <!--Contact List View Controller-->
         <scene sceneID="VZa-dm-UPq">
             <objects>
-                <viewController id="Caz-cR-TjI" customClass="ContactListViewController" customModule="GoJekContacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ContactListViewController" storyboardIdentifier="ContactListViewController" id="Caz-cR-TjI" customClass="ContactListViewController" customModule="GoJekContacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dyx-2i-Gft">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

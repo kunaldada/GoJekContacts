@@ -97,7 +97,7 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         
         guard let detailViewModal = cellViewModalsAllList[indexPath.section][indexPath.row].shortContact else {return}
         
-        if let detailViewController = ContactDetailViewController(detailModal: detailViewModal) {
+        if let detailViewController = ContactDetailViewController(detailModal: detailViewModal, dataFetcher: DataFetcher.shared) {
             detailViewController.contactModalUpdatedBlock = {[weak self](updatedContactsDetailModal: ContactsDetailModalProtocol?) in
                 self?.viewModal?.updateContact(existingIndexPath: indexPath, newContact: updatedContactsDetailModal)
             }

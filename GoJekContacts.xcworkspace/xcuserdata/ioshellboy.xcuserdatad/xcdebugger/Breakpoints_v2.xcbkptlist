@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoJekContacts/AddEditContact/AddEditContactViewController.swift"
-            timestampString = "582363041.936298"
+            filePath = "GoJekContacts/ContactList/ContactListViewModal.swift"
+            timestampString = "582430859.4726731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "textFieldInCellBecameActive(cell:)"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "updateContact(existingIndexPath:newContact:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,45 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoJekContacts/AddEditContact/AddEditContactViewController.swift"
-            timestampString = "582363041.9367729"
+            filePath = "GoJekContacts/ContactList/ContactListViewModal.swift"
+            timestampString = "582430859.473276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "willDisplayKeyboard(notification:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoJekContacts/AddEditContact/AddEditContactViewController.swift"
-            timestampString = "582363041.9369119"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "willDisplayKeyboard(notification:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoJekContacts/AddEditContact/AddEditContactViewModal.swift"
-            timestampString = "582363100.399429"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "validateAllDataAndSync()"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "updateContact(existingIndexPath:newContact:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

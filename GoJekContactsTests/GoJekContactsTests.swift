@@ -14,11 +14,16 @@ class GoJekContactsTests: XCTestCase {
     var contactListViewModal: ContactListViewModal!
     var addEditContactViewModal: AddEditContactViewModal!
     var mockDataFetcher: MockDataFetcher!
-    
+        
     override func setUp() {
         contactListViewModal = ContactListViewModal()
         addEditContactViewModal = AddEditContactViewModal()
         mockDataFetcher = MockDataFetcher()
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        contactListViewController = storyboard.instantiateViewController(withIdentifier: "ContactListViewController") as! ContactListViewController
+        
+
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
@@ -29,18 +34,6 @@ class GoJekContactsTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
     func testShortContactModalGroupings() {
         let contact1 = ShortContactModal(contactId: nil, firstName: "Abhishek", lastName: nil, profilePic: nil, favorite: nil, url: nil, errors: nil)
         let contact2 = ShortContactModal(contactId: nil, firstName: "Arijit", lastName: nil, profilePic: nil, favorite: nil, url: nil, errors: nil)
@@ -127,5 +120,6 @@ class GoJekContactsTests: XCTestCase {
         XCTAssertEqual(apiFirstNameParam, changedInfoValues[ContactKeys.firstName], "Text Field entry does not matches the paramtere posted to the server")
         
     }
+    
     
 }

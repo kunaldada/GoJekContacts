@@ -26,6 +26,8 @@
         var contactsDetailModal: ContactsDetailModalProtocol?
         var contactModalUpdatedBlock: ((_ updatedContactsDetailModal: ContactsDetailModalProtocol?) -> (Void))?
         private var updatedContactsDetailModal: ContactsDetailModalProtocol?
+        private var dataFetcher: DataFetcherProtocol?
+        
         @IBOutlet weak var detailTableView: UITableView!
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -33,6 +35,7 @@
             self.detailTableView.register(UINib(nibName: CellReuseIdentifierConstants.contactDetailProfileTableViewCell, bundle: nil), forCellReuseIdentifier: CellReuseIdentifierConstants.contactDetailProfileTableViewCell)
             self.initViewModal()
             self.addNavigationBarButtons()
+            print("did load")
             // Do any additional setup after loading the view.
         }
         
@@ -42,15 +45,16 @@
         }
         
         
-        init?(detailModal: ContactsDetailModalProtocol?) {
+        init?(detailModal: ContactsDetailModalProtocol?, dataFetcher: DataFetcherProtocol?) {
             guard let detailModal = detailModal else {return nil}
             super.init(nibName: "ContactDetailViewController", bundle: nil)
             self.contactsDetailModal = detailModal
+            self.dataFetcher = dataFetcher
         }
         
         private func initViewModal() {
             self.viewModal = ContactDetailViewModal()
-            self.viewModal?.dataFetcher = DataFetcher.shared
+            self.viewModal?.dataFetcher = self.dataFetcher
             self.viewModal?.dataFetched = {[weak self] in
                 self?.detailTableView.reloadData()
             }
